@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}My Bookings{% endblock %}
+{% block content %}
+<h2>My Bookings</h2>
+{% if bookings %}
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Type</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Date</th>
+        <th>Booked At</th>
+    </tr>
+    {% for b in bookings %}
+    <tr>
+        <td>{{ b.booking_type }}</td>
+        <td>{{ b.source }}</td>
+        <td>{{ b.destination }}</td>
+        <td>{{ b.travel_date }}</td>
+        <td>{{ b.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No bookings yet.</p>
+{% endif %}
+{% endblock %}

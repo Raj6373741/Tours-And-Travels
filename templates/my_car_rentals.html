@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}My Car Rentals{% endblock %}
+{% block content %}
+<h2>My Car Rentals</h2>
+{% if rentals %}
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Car Type</th>
+        <th>Pickup Location</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Booked At</th>
+    </tr>
+    {% for r in rentals %}
+    <tr>
+        <td>{{ r.car_type }}</td>
+        <td>{{ r.pickup_location }}</td>
+        <td>{{ r.start_date }}</td>
+        <td>{{ r.end_date }}</td>
+        <td>{{ r.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No car rentals yet.</p>
+{% endif %}
+{% endblock %}

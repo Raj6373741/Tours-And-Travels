@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Book Ticket{% endblock %}
+{% block content %}
+<h2>Book a Ticket</h2>
+<form method="POST">
+    <label for="booking_type">Type:</label><br>
+    <select name="booking_type" required>
+        <option value="Flight">Flight</option>
+        <option value="Train">Train</option>
+        <option value="Bus">Bus</option>
+    </select><br><br>
+
+    <label for="source">Source:</label><br>
+    <input type="text" name="source" required><br><br>
+
+    <label for="destination">Destination:</label><br>
+    <input type="text" name="destination" required><br><br>
+
+    <label for="travel_date">Travel Date:</label><br>
+    <input type="date" name="travel_date" required><br><br>
+
+    <button type="submit">Book Now</button>
+</form>
+{% endblock %}

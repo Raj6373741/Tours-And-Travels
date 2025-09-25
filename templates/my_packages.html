@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}My Tour Packages{% endblock %}
+{% block content %}
+<h2>My Package Bookings</h2>
+{% if my_bookings %}
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Package</th>
+        <th>Category</th>
+        <th>Price (₹)</th>
+        <th>Booking Date</th>
+        <th>Booked At</th>
+    </tr>
+    {% for b in my_bookings %}
+    <tr>
+        <td>{{ b.package_name }}</td>
+        <td>{{ b.category }}</td>
+        <td>{{ b.price }}</td>
+        <td>{{ b.booking_date }}</td>
+        <td>{{ b.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No packages booked yet.</p>
+{% endif %}
+{% endblock %}

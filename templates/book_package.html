@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Book Package{% endblock %}
+{% block content %}
+<h2>Book Package: {{ package.package_name }}</h2>
+<p><b>Category:</b> {{ package.category }}</p>
+<p><b>Price:</b> ₹{{ package.price }}</p>
+<p><b>Description:</b> {{ package.description }}</p>
+
+<form method="POST">
+    <label for="booking_date">Booking Date:</label><br>
+    <input type="date" name="booking_date" required><br><br>
+
+    <button type="submit">Confirm Booking</button>
+</form>
+{% endblock %}
