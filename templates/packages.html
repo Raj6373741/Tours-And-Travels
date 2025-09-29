@@ -1,23 +1,22 @@
 {% extends "base.html" %}
-{% block title %}Tour Packages{% endblock %}
+{% block title %}Explore Tour Packages{% endblock %}
 {% block content %}
-<h2>Available Tour Packages</h2>
-<table border="1" cellpadding="8">
-    <tr>
-        <th>Package</th>
-        <th>Category</th>
-        <th>Price (₹)</th>
-        <th>Description</th>
-        <th>Action</th>
-    </tr>
-    {% for p in packages %}
-    <tr>
-        <td>{{ p.package_name }}</td>
-        <td>{{ p.category }}</td>
-        <td>{{ p.price }}</td>
-        <td>{{ p.description }}</td>
-        <td><a href="{{ url_for('book_package', package_id=p.id) }}">Book</a></td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container my-5">
+    <h2 class="text-center mb-4">🌍 Explore Tour Packages</h2>
+    <div class="row">
+        {% for p in packages %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename='img/default_package.jpg') }}" class="card-img-top" alt="Package">
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.package_name }}</h5>
+                    <p class="card-text">{{ p.description[:100] }}...</p>
+                    <p class="fw-bold">₹{{ p.price }}</p>
+                    <a href="{{ url_for('book_package', package_id=p.id) }}" class="btn btn-warning w-100">Book Now</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

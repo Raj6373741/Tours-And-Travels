@@ -4,34 +4,98 @@
     <meta charset="UTF-8">
     <title>{% block title %}Tours & Travels{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <nav>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('about') }}">About</a>
-            <a href="{{ url_for('services') }}">Services</a>
-            <a href="{{ url_for('contact') }}">Contact</a>
-            
-            {% if session.get('user') %}
-                <a href="{{ url_for('dashboard') }}">Dashboard</a>
-                <a href="{{ url_for('logout') }}">Logout</a>
-            {% else %}
-                <a href="{{ url_for('login') }}">Login</a>
-                <a href="{{ url_for('register') }}">Register</a>
-            {% endif %}
-        </nav>
-    </header>
+<body class="d-flex flex-column min-vh-100">
 
-    <main>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, msg in messages %}
-                    <p class="{{ category }}">{{ msg }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">🌍 Global Tours</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('services') }}">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('book') }}">Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('rent_car') }}">Car Rental</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('packages') }}">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+                    {% if session.get('user') %}
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link btn btn-warning text-dark px-3 ms-2" href="{{ url_for('login') }}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash messages -->
+    <div class="container mt-3 {% if not get_flashed_messages() %}d-none{% endif %}">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, msg in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm" role="alert">
+                    {{ msg }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+    <!-- Main Page Content -->
+    <main class="flex-grow-1">
         {% block content %}{% endblock %}
     </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white mt-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>🌍 Global Tours</h5>
+                    <p>Your trusted partner for unforgettable journeys around the world.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('home') }}" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="{{ url_for('packages') }}" class="text-white text-decoration-none">Packages</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contact Us</h5>
+                    <p><i class="bi bi-envelope"></i> support@globaltours.com</p>
+                    <p><i class="bi bi-telephone"></i> +91-9876543210</p>
+                    <p><i class="bi bi-geo-alt"></i> 123 Travel Street, New Delhi, India</p>
+                </div>
+            </div>
+            <div class="text-center mt-3 border-top pt-3 small">
+                <p class="mb-0">© 2025 Global Tours. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+<script>
+window.addEventListener("scroll", function() {
+    let navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+</script>
+
 </body>
 </html>

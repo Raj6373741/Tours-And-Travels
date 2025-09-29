@@ -19,7 +19,17 @@ def get_db_connection():
 # ------------------- ROUTES -------------------
 @app.route("/")
 def home():
-    return render_template("index.html")
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    # fetch all packages (or limit if you want)
+    cursor.execute("SELECT * FROM tour_packages ORDER BY created_at DESC LIMIT 6")
+    packages = cursor.fetchall()
+
+    conn.close()
+
+    return render_template("index.html", packages=packages)
+
 
 @app.route("/about")
 def about():
@@ -192,8 +202,71 @@ def dashboard():
         flash("Please login first", "warning")
         return redirect(url_for("login"))
 
-    # Just load the normal user dashboard (no role check needed now)
-    return render_template("dashboard.html", user=session["user"])
+    user_email = session["user"]
+
+    # Fetch user’s own bookings, rentals, packages
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM bookings WHERE user_email=%s", (user_email,))
+    user_bookings = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM car_rentals WHERE user_email=%s", (user_email,))
+    user_rentals = cursor.fetchall()
+
+    cursor.execute("""
+        SELECT tp.package_name, pb.booking_date, pb.created_at
+        FROM package_bookings pb
+        JOIN tour_packages tp ON pb.package_id = tp.id
+        WHERE pb.user_email=%s
+    """, (user_email,))
+    user_packages = cursor.fetchall()
+
+    conn.close()
+
+    return render_template("dashboard.html",
+                           user=user_email,
+                           bookings=user_bookings,
+                           rentals=user_rentals,
+                           packages=user_packages)
+
+@app.route("/admin/dashboard")
+def admin_dashboard():
+    if "admin" not in session:
+        flash("Please login as admin first", "warning")
+        return redirect(url_for("admin_login"))
+
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT id, name, email FROM users")
+    users = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM bookings")
+    bookings = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM car_rentals")
+    rentals = cursor.fetchall()
+
+    cursor.execute("""
+        SELECT pb.id, pb.user_email, tp.package_name, pb.booking_date, pb.created_at
+        FROM package_bookings pb
+        JOIN tour_packages tp ON pb.package_id = tp.id
+    """)
+    package_bookings = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM contact_messages")
+    contacts = cursor.fetchall()
+
+    conn.close()
+
+    return render_template("admin_dashboard.html",
+                           users=users,
+                           bookings=bookings,
+                           rentals=rentals,
+                           package_bookings=package_bookings,
+                           contacts=contacts)
+
 
 
 @app.route("/admin/login", methods=["GET", "POST"])
@@ -223,49 +296,6 @@ def admin_logout():
     flash("Admin logged out successfully!", "info")
     return redirect(url_for("admin_login"))
 
-
-@app.route("/admin/dashboard")
-def admin_dashboard():
-    if "admin" not in session:
-        flash("Please login as admin first", "warning")
-        return redirect(url_for("admin_login"))
-
-    conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-
-    # Get all users
-    cursor.execute("SELECT id, name, email FROM users")
-    users = cursor.fetchall()
-
-    # Get all bookings
-    cursor.execute("SELECT * FROM bookings")
-    bookings = cursor.fetchall()
-
-    # Get all car rentals
-    cursor.execute("SELECT * FROM car_rentals")
-    rentals = cursor.fetchall()
-
-    # Get all package bookings with package info
-    cursor.execute("""
-        SELECT pb.id, pb.user_email, tp.package_name, pb.booking_date, pb.created_at
-        FROM package_bookings pb
-        JOIN tour_packages tp ON pb.package_id = tp.id
-        ORDER BY pb.created_at DESC
-    """)
-    package_bookings = cursor.fetchall()
-
-    # Get contact messages
-    cursor.execute("SELECT * FROM contact_messages")
-    contacts = cursor.fetchall()
-
-    conn.close()
-
-    return render_template("admin_dashboard.html",
-                           users=users,
-                           bookings=bookings,
-                           rentals=rentals,
-                           package_bookings=package_bookings,
-                           contacts=contacts)
 
 @app.route("/admin/register", methods=["GET", "POST"])
 def admin_register():
