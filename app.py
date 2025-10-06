@@ -144,10 +144,69 @@ def my_car_rentals():
 def packages():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM tour_packages")
+
+    # Get filter values from URL parameters
+    search = request.args.get("search", "")
+    region = request.args.get("region", "")
+    category = request.args.get("category", "")
+    sort = request.args.get("sort", "")
+
+    query = """
+        SELECT id, package_name, category, price, old_price, discount, image, duration,
+               location, region, popular_attraction, accessibility,
+               nearest_airport, nearest_railway, description
+        FROM tour_packages
+        WHERE 1=1
+    """
+    params = []
+
+    # Apply filters dynamically
+    if search:
+        query += " AND (package_name LIKE %s OR popular_attraction LIKE %s OR description LIKE %s)"
+        search_term = f"%{search}%"
+        params += [search_term, search_term, search_term]
+
+    if region:
+        query += " AND region = %s"
+        params.append(region)
+
+    if category:
+        query += " AND category = %s"
+        params.append(category)
+
+    # Sorting logic
+    if sort == "low_high":
+        query += " ORDER BY price ASC"
+    elif sort == "high_low":
+        query += " ORDER BY price DESC"
+    else:
+        query += " ORDER BY id DESC"
+
+    cursor.execute(query, tuple(params))
     packages = cursor.fetchall()
     conn.close()
-    return render_template("packages.html", packages=packages)
+
+    # Fetch unique regions and categories for dropdowns
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT DISTINCT region FROM tour_packages WHERE region IS NOT NULL AND region != ''")
+    regions = [r[0] for r in cursor.fetchall()]
+    cursor.execute("SELECT DISTINCT category FROM tour_packages WHERE category IS NOT NULL AND category != ''")
+    categories = [c[0] for c in cursor.fetchall()]
+    conn.close()
+
+    return render_template(
+        "packages.html",
+        packages=packages,
+        regions=regions,
+        categories=categories,
+        search=search,
+        selected_region=region,
+        selected_category=category,
+        selected_sort=sort,
+    )
+
+
 
 @app.route("/book_package/<int:package_id>", methods=["GET", "POST"])
 def book_package(package_id):

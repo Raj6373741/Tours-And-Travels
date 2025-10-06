@@ -1,22 +1,101 @@
 {% extends "base.html" %}
-{% block title %}Explore Tour Packages{% endblock %}
+{% block title %}Explore India - Tour Packages{% endblock %}
 {% block content %}
-<div class="container my-5">
-    <h2 class="text-center mb-4">🌍 Explore Tour Packages</h2>
-    <div class="row">
-        {% for p in packages %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <img src="{{ url_for('static', filename='img/default_package.jpg') }}" class="card-img-top" alt="Package">
-                <div class="card-body">
-                    <h5 class="card-title">{{ p.package_name }}</h5>
-                    <p class="card-text">{{ p.description[:100] }}...</p>
-                    <p class="fw-bold">₹{{ p.price }}</p>
-                    <a href="{{ url_for('book_package', package_id=p.id) }}" class="btn btn-warning w-100">Book Now</a>
-                </div>
+
+<section class="hero-banner text-center text-white py-5"
+    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+            url('{{ url_for('static', filename='img/india-banner.jpg') }}') center/cover no-repeat;">
+    <div class="container">
+        <h1 class="fw-bold mb-3">🌏 Explore Incredible India</h1>
+        <p class="lead">Find your dream destination and discover amazing adventures across the country.</p>
+    </div>
+</section>
+
+<div class="container py-5">
+
+    <!-- 🔍 Filter Section -->
+    <form method="GET" action="{{ url_for('packages') }}" class="card p-3 mb-4 shadow-sm">
+        <div class="row g-3 align-items-center">
+            <div class="col-md-4">
+                <input type="text" name="search" class="form-control" placeholder="Search destinations..."
+                       value="{{ search }}">
+            </div>
+            <div class="col-md-2">
+                <select name="region" class="form-select">
+                    <option value="">All Regions</option>
+                    {% for r in regions %}
+                    <option value="{{ r }}" {% if selected_region == r %}selected{% endif %}>{{ r }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select name="category" class="form-select">
+                    <option value="">All Categories</option>
+                    {% for c in categories %}
+                    <option value="{{ c }}" {% if selected_category == c %}selected{% endif %}>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select name="sort" class="form-select">
+                    <option value="">Sort by</option>
+                    <option value="low_high" {% if selected_sort == 'low_high' %}selected{% endif %}>Price: Low → High</option>
+                    <option value="high_low" {% if selected_sort == 'high_low' %}selected{% endif %}>Price: High → Low</option>
+                </select>
+            </div>
+            <div class="col-md-2 text-end">
+                <button type="submit" class="btn btn-warning w-100">Apply</button>
             </div>
         </div>
-        {% endfor %}
+    </form>
+
+    <!-- 📦 Packages Grid -->
+    <div class="row g-4">
+        {% if packages %}
+            {% for p in packages %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card package-card h-100 border-0 shadow-sm">
+                    <div class="position-relative">
+                        <img src="{{ url_for('static', filename='img/packages/' ~ p.image) }}"
+                             class="card-img-top" alt="{{ p.package_name }}">
+                        <span class="badge bg-primary position-absolute top-0 start-0 m-2">{{ p.duration }}</span>
+                        {% if p.discount %}
+                        <span class="badge bg-danger position-absolute top-0 end-0 m-2">-{{ p.discount }}%</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-semibold">{{ p.package_name }}</h5>
+                        <p class="text-muted small mb-1"><i class="bi bi-geo-alt"></i> {{ p.location }} ({{ p.region }})</p>
+                        <p class="text-secondary small mb-2">
+                            <i class="bi bi-star-fill text-warning"></i> {{ p.popular_attraction }}
+                        </p>
+                        <p class="flex-grow-1 text-muted small">{{ p.description[:120] }}...</p>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <span class="fw-bold text-success">₹{{ p.price }}</span>
+                                    {% if p.old_price %}
+                                    <small class="text-decoration-line-through text-muted ms-1">₹{{ p.old_price }}</small>
+                                    {% endif %}
+                                </div>
+                                <a href="{{ url_for('book_package', package_id=p.id) }}" class="btn btn-warning btn-sm">Book Now</a>
+                            </div>
+                            <div class="text-muted small">
+                                ✈️ {{ p.nearest_airport }} | 🚆 {{ p.nearest_railway }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center py-5 text-muted">
+                <p>No packages match your filters. Try a different search!</p>
+            </div>
+        {% endif %}
     </div>
 </div>
+
 {% endblock %}

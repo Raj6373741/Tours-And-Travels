@@ -1,0 +1,1103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<IndianTravel>
+  <Destination>
+    <Destination_Name>Taj Mahal</Destination_Name>
+    <State>Uttar Pradesh</State>
+    <Region>North</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Taj Mahal</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Agra Civil Enclave</Nearest_Airport>
+    <Nearest_Railway_Station>Agra Cantt</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Amber Fort</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Jaipur International</Nearest_Airport>
+    <Nearest_Railway_Station>Jaipur Junction</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Goa</Destination_Name>
+    <State>Goa</State>
+    <Region>West</Region>
+    <Category>Beach</Category>
+    <Popular_Attraction>Calangute Beach</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Dabolim Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Madgaon Railway Station</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kerala Backwaters</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Vembanad Lake</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Alleppey</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Varanasi</Destination_Name>
+    <State>Uttar Pradesh</State>
+    <Region>North</Region>
+    <Category>Religious</Category>
+    <Popular_Attraction>Ghats of Varanasi</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Lal Bahadur Shastri</Nearest_Airport>
+    <Nearest_Railway_Station>Varanasi Junction</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Manali</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Solang Valley</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Bhuntar Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Joginder Nagar</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Sundarbans</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Sundarbans National Park</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Netaji Subhas Chandra Bose</Nearest_Airport>
+    <Nearest_Railway_Station>Canning</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Amritsar</Destination_Name>
+    <State>Punjab</State>
+    <Region>North</Region>
+    <Category>Religious</Category>
+    <Popular_Attraction>Golden Temple</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Sri Guru Ram Dass Jee</Nearest_Airport>
+    <Nearest_Railway_Station>Amritsar Junction</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mahabalipuram</Destination_Name>
+    <State>Tamil Nadu</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Shore Temple</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Chennai International</Nearest_Airport>
+    <Nearest_Railway_Station>Chengalpattu</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Andaman Islands</Destination_Name>
+    <State>Andaman and Nicobar</State>
+    <Region>East</Region>
+    <Category>Beach</Category>
+    <Popular_Attraction>Radhanagar Beach</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Veer Savarkar International</Nearest_Airport>
+    <Nearest_Railway_Station>Port Blair</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Kaziranga National Park</Destination_Name>
+    <State>Assam</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Kaziranga National Park</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jorhat Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Furkating</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Mysore</Destination_Name>
+    <State>Karnataka</State>
+    <Region>South</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Mysore Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Mysore Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Mysore</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Jaisalmer</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Jaisalmer Fort</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Jaisalmer Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Jaisalmer</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Rishikesh</Destination_Name>
+    <State>Uttarakhand</State>
+    <Region>North</Region>
+    <Category>Adventure</Category>
+    <Popular_Attraction>Lakshman Jhula</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Dehradun Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Rishikesh</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Shimla</Destination_Name>
+    <State>Himachal Pradesh</State>
+    <Region>North</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Mall Road</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Shimla Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Shimla</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Udaipur</Destination_Name>
+    <State>Rajasthan</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>City Palace</Popular_Attraction>
+    <Accessibility>Easy</Accessibility>
+    <Nearest_Airport>Udaipur Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Udaipur City</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Darjeeling</Destination_Name>
+    <State>West Bengal</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tiger Hill</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Bagdogra Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Darjeeling</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Munnar</Destination_Name>
+    <State>Kerala</State>
+    <Region>South</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Tea Gardens</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Cochin International</Nearest_Airport>
+    <Nearest_Railway_Station>Ernakulam</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Ajanta and Ellora Caves</Destination_Name>
+    <State>Maharashtra</State>
+    <Region>West</Region>
+    <Category>Heritage</Category>
+    <Popular_Attraction>Ajanta Caves</Popular_Attraction>
+    <Accessibility>Moderate</Accessibility>
+    <Nearest_Airport>Aurangabad Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Aurangabad</Nearest_Railway_Station>
+  </Destination>
+  <Destination>
+    <Destination_Name>Cherrapunji</Destination_Name>
+    <State>Meghalaya</State>
+    <Region>East</Region>
+    <Category>Nature</Category>
+    <Popular_Attraction>Nohkalikai Falls</Popular_Attraction>
+    <Accessibility>Difficult</Accessibility>
+    <Nearest_Airport>Shillong Airport</Nearest_Airport>
+    <Nearest_Railway_Station>Guwahati</Nearest_Railway_Station>
+  </Destination>
+</IndianTravel>

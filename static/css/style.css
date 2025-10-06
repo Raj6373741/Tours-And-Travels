@@ -161,3 +161,137 @@ a {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* ====== PACKAGES PAGE ====== */
+.packages-header {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+.package-card {
+    border-radius: 15px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.package-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+.package-card img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.package-card .badge {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+}
+.package-card .card-body {
+    padding: 1.25rem;
+}
+.package-card .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+.package-card .card-text {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.hero-banner {
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.package-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.package-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+.package-card img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.package-card .badge {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+form.card select,
+form.card input {
+    border-radius: 8px;
+}
+
+form.card .btn-warning {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+form.card {
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.package-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.package-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.register-section {
+    background: linear-gradient(135deg, #ffd166 0%, #fca311 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-card {
+    border-radius: 20px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+.register-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.register-card .input-group-text {
+    border: none;
+    background-color: #f8f9fa;
+    color: #fca311;
+    font-size: 1.1rem;
+}
+
+.register-card input.form-control {
+    border: none;
+    border-bottom: 2px solid #eee;
+    transition: border-color 0.3s ease;
+    box-shadow: none;
+}
+.register-card input.form-control:focus {
+    border-color: #fca311;
+    box-shadow: none;
+}
+
+.btn-warning {
+    background-color: #fca311;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-warning:hover {
+    background-color: #e89d00;
+    transform: scale(1.02);
+}
