@@ -129,9 +129,7 @@ a {
     transform: translateY(-8px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
-.card-body {
-    padding: 1.5rem;
-}
+
 .card-title {
     color: #212529;
 }
@@ -184,9 +182,6 @@ a {
     padding: 6px 10px;
     font-size: 0.85rem;
     border-radius: 8px;
-}
-.package-card .card-body {
-    padding: 1.25rem;
 }
 .package-card .card-title {
     font-size: 1.25rem;
@@ -294,4 +289,833 @@ form.card {
 .btn-warning:hover {
     background-color: #e89d00;
     transform: scale(1.02);
+}
+
+.login-section {
+    background: linear-gradient(135deg, #ffd166 0%, #fca311 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    border-radius: 20px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.login-card .input-group-text {
+    border: none;
+    background-color: #f8f9fa;
+    color: #fca311;
+    font-size: 1.1rem;
+}
+
+.login-card input.form-control {
+    border: none;
+    border-bottom: 2px solid #eee;
+    transition: border-color 0.3s ease;
+    box-shadow: none;
+}
+.login-card input.form-control:focus {
+    border-color: #fca311;
+    box-shadow: none;
+}
+
+.btn-warning {
+    background-color: #fca311;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-warning:hover {
+    background-color: #e89d00;
+    transform: scale(1.02);
+}
+
+
+/* ==== Common Auth Page Styles ==== */
+.auth-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.auth-card {
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+.auth-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+/* ✅ Validation Styling */
+input.is-valid {
+  border-color: #198754 !important;
+}
+input.is-invalid {
+  border-color: #dc3545 !important;
+}
+.invalid-feedback {
+  display: block;
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 🔁 Smooth transitions */
+input.form-control {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ✨ Shake animation when form invalid */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* 🔦 Fade-in animation for messages */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Validation feedback fixes */
+input.is-invalid {
+  border-color: #dc3545 !important;
+}
+input.is-valid {
+  border-color: #198754 !important;
+}
+.invalid-feedback {
+  display: none;
+}
+input.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* Password strength meter */
+.progress {
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-bar {
+  transition: width 0.4s ease-in-out;
+}
+
+/* Validation Styling */
+input.is-invalid {
+  border-color: #dc3545 !important;
+}
+input.is-valid {
+  border-color: #198754 !important;
+}
+.invalid-feedback {
+  display: none;
+}
+input.is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+/* Password Strength Meter */
+.progress {
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-bar {
+  transition: width 0.4s ease-in-out;
+}
+
+/* Smooth focus glow */
+input.form-control:focus {
+  box-shadow: 0 0 6px rgba(250, 162, 12, 0.4);
+}
+
+/* ✨ Animate form entry */
+.animate-in {
+  animation: slideIn 0.8s ease forwards;
+  opacity: 0;
+}
+@keyframes slideIn {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Password toggle cursor */
+.password-toggle {
+  cursor: pointer;
+  user-select: none;
+}
+.password-toggle i {
+  color: #fca311;
+}
+
+/* Progress bar smooth animation already handled */
+.progress-bar {
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+
+/* ===============================
+   🌍 CONTACT PAGE STYLING
+   =============================== */
+.contact-section {
+  background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
+  min-height: 100vh;
+  position: relative;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 📨 Contact Form Card */
+.contact-card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.contact-card .form-control {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: border-color 0.3s ease;
+}
+.contact-card .form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+/* ✈️ Send Button */
+.btn-contact {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-contact:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,123,255,0.3);
+}
+
+/* 📍 Contact Info Card */
+.contact-info-card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* 🗺️ Map Styling */
+.map-container iframe {
+  filter: grayscale(30%) contrast(1.1) brightness(1.1);
+  transition: all 0.5s ease;
+}
+.map-container iframe:hover {
+  filter: none;
+}
+
+/* 🌟 Floating animation effect for both cards */
+.contact-card, .contact-info-card {
+  animation: fadeSlideUp 0.8s ease both;
+}
+@keyframes fadeSlideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* ================================
+   🚗 MY CAR RENTALS PAGE STYLING
+   ================================ */
+
+.car-rentals-section {
+  background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Table Styling */
+.table-gradient {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+}
+
+.rental-table {
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.rental-table thead th {
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rental-table tbody tr {
+  transition: all 0.3s ease;
+}
+.rental-table tbody tr:hover {
+  background: rgba(0, 123, 255, 0.1);
+  transform: scale(1.01);
+}
+
+/* Empty state */
+.no-rentals img {
+  opacity: 0.8;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+}
+.no-rentals p {
+  font-size: 1rem;
+}
+
+/* Buttons */
+.btn-gradient-blue {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-gradient-blue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+  color: #fff;
+}
+
+/* Animation */
+.animate-in {
+  animation: fadeInUp 0.8s ease both;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ===============================
+   🚘 RENT A CAR PAGE STYLING
+   =============================== */
+
+.rent-car-section {
+  background: linear-gradient(135deg, #e3f2fd, #e0f7fa);
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+/* Filter bar */
+.filter-bar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+.filter-bar:hover {
+  transform: translateY(-3px);
+}
+
+/* Car cards */
+.car-card {
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+}
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Car image with overlay tag */
+.car-image-wrapper {
+  position: relative;
+}
+.car-image-wrapper img {
+  height: 200px;
+  object-fit: cover;
+}
+.price-tag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: #fff;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Specs & icons */
+.car-specs {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #555;
+}
+.car-specs span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Gradient buttons */
+.btn-gradient-orange {
+  background: linear-gradient(90deg, #ff9800, #ff5722);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-gradient-orange:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3);
+  color: #fff;
+}
+
+.btn-gradient-blue {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-gradient-blue:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3);
+  color: #fff;
+}
+
+/* Animation */
+.animate-in {
+  animation: fadeInUp 0.8s ease both;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.auth-section {
+  background: linear-gradient(135deg, #e3f2fd, #e0f7fa);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+}
+
+/* ===============================
+   🌟 PREMIUM REGISTER PAGE CSS
+   =============================== */
+
+/* 🌈 Full-page animated gradient background */
+.register-bg {
+  background: linear-gradient(135deg, #e0f3ff, #ffffff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.register-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+  animation: floatBg 16s ease-in-out infinite alternate;
+  z-index: 1;
+}
+@keyframes floatBg {
+  from { transform: translateY(0); }
+  to { transform: translateY(-35px); }
+}
+
+/* 🪄 Glassmorphic auth card */
+.auth-card {
+  position: relative;
+  z-index: 2;
+  width: 500px;
+  max-width: 95%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 30px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  padding: 3rem 2.5rem;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.auth-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25);
+}
+
+/* ✨ Animated neon swirl behind card */
+.auth-card::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: conic-gradient(from 180deg, rgba(255, 193, 7, 0.2), rgba(255, 87, 34, 0.15), transparent);
+  filter: blur(120px);
+  z-index: -1;
+  animation: swirlNeon 12s linear infinite;
+}
+@keyframes swirlNeon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 🧊 Header Text */
+.auth-card h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+}
+.auth-card p {
+  text-align: center;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* 🎯 Floating Labels for Inputs */
+.form-floating {
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+.form-floating input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  font-size: 1rem;
+  padding: 12px 0 8px;
+  color: #fff;
+  outline: none;
+  transition: all 0.4s ease;
+}
+.form-floating input:focus {
+  border-color: #ff9f1c;
+  box-shadow: 0 0 12px rgba(255, 159, 28, 0.4);
+}
+.form-floating label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label {
+  top: -12px;
+  font-size: 0.8rem;
+  color: #ffb347;
+  font-weight: 600;
+}
+
+/* ✨ Input icons */
+.input-icon {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  font-size: 1.2rem;
+  color: #ffb347;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+.form-floating input:focus ~ .input-icon {
+  transform: scale(1.2);
+}
+
+/* 🔒 Password toggle */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #ffb347;
+  transition: transform 0.3s ease;
+}
+.password-toggle:hover {
+  transform: scale(1.3);
+}
+
+/* 💪 Password strength bar */
+.progress {
+  height: 7px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.2);
+  margin-top: 6px;
+}
+.progress-bar {
+  height: 7px;
+  border-radius: 12px;
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+.progress-bar.bg-danger { background: #ff4d4f; }
+.progress-bar.bg-warning { background: #ffc107; }
+.progress-bar.bg-info { background: #00bcd4; }
+.progress-bar.bg-success { background: #4caf50; }
+#strengthText {
+  font-weight: 500;
+  color: #fff;
+  margin-top: 4px;
+  font-size: 0.85rem;
+}
+
+/* 🔥 Gradient Buttons */
+.btn-register {
+  background: linear-gradient(90deg, #ff9f1c, #f77f00);
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 12px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(247,127,0,0.3);
+}
+.btn-register:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(247,127,0,0.5);
+  background: linear-gradient(90deg, #ffb347, #ff6f00);
+}
+
+/* 🟢 Validation */
+input.is-valid { border-color: #4caf50 !important; }
+input.is-invalid { border-color: #ff4d4f !important; }
+.invalid-feedback {
+  display: block;
+  color: #ff4d4f;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  animation: fadeIn 0.4s ease;
+}
+
+/* ✨ Smooth entry animation */
+.animate-in {
+  animation: fadeSlideUp 1s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeSlideUp {
+  from { transform: translateY(60px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ================================
+   🌟 Premium Floating Blobs Background
+   ================================ */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  animation: floatBlob 20s ease-in-out infinite;
+  pointer-events: none; /* prevent blocking clicks */
+  z-index: 0;
+}
+
+.blob1 {
+  width: 300px; height: 300px;
+  background: #ff9a9e;
+  top: 10%; left: 15%;
+  animation-duration: 25s;
+}
+.blob2 {
+  width: 400px; height: 400px;
+  background: #fad0c4;
+  top: 50%; left: 70%;
+  animation-duration: 30s;
+}
+.blob3 {
+  width: 350px; height: 350px;
+  background: #fbc2eb;
+  top: 75%; left: 30%;
+  animation-duration: 35s;
+}
+
+@keyframes floatBlob {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg);}
+  50% { transform: translateY(-30px) translateX(20px) rotate(180deg);}
+  100% { transform: translateY(0px) translateX(0px) rotate(360deg);}
+}
+
+/* Neon gradient text */
+.text-gradient {
+  background: linear-gradient(90deg, #ff9f1c, #f77f00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* Glassmorphic Card Shadow Glow */
+.auth-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 30px;
+  box-shadow: 0 25px 60px rgba(255, 159, 28, 0.3);
+  position: relative;
+  z-index: 2;
+  padding: 3rem 2.5rem;
+  transition: all 0.5s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 35px 70px rgba(255, 159, 28, 0.5);
+}
+
+/* Floating card neon swirl */
+.auth-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: conic-gradient(from 180deg, rgba(255,159,28,0.2), rgba(247,127,0,0.15), transparent);
+  filter: blur(150px);
+  z-index: -1;
+  animation: swirlNeon 15s linear infinite;
+}
+@keyframes swirlNeon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Enhanced floating labels and glow */
+.form-floating input:focus {
+  border-color: #ff9f1c;
+  box-shadow: 0 0 16px rgba(255,159,28,0.4);
+}
+
+.input-icon {
+  color: #ff9f1c;
+  font-size: 1.2rem;
+}
+
+/* Buttons upgrade */
+.btn-register {
+  background: linear-gradient(90deg, #ff9f1c, #f77f00);
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 14px;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(247,127,0,0.4);
+  transition: all 0.3s ease;
+}
+.btn-register:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 50px rgba(247,127,0,0.6);
+  background: linear-gradient(90deg, #ffb347, #ff6f00);
+}
+
+/* Floating blobs should always be behind card */
+.register-bg .blob {
+  z-index: 0;
+}
+.auth-card {
+  z-index: 2;
+}
+
+.auth-card,
+.auth-container {
+  position: relative;
+  z-index: 5;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+.package-card .card-body {
+    padding: 1.25rem;
+}
+
+.card-body1{
+  background-color: #8ff3fa;
+}
+
+.card-body1 {
+    padding: 1.5rem;
+}
+
+.package-card .card-body1 {
+    padding: 1.25rem;
 }

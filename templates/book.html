@@ -1,24 +1,71 @@
 {% extends "base.html" %}
 {% block title %}Book Ticket{% endblock %}
 {% block content %}
-<h2>Book a Ticket</h2>
-<form method="POST">
-    <label for="booking_type">Type:</label><br>
-    <select name="booking_type" required>
-        <option value="Flight">Flight</option>
-        <option value="Train">Train</option>
-        <option value="Bus">Bus</option>
-    </select><br><br>
 
-    <label for="source">Source:</label><br>
-    <input type="text" name="source" required><br><br>
+<div class="container my-5 p-4 bg-light rounded shadow-sm">
+    <h2 class="text-center mb-4 text-primary">🎟️ Book Your Ticket</h2>
 
-    <label for="destination">Destination:</label><br>
-    <input type="text" name="destination" required><br><br>
+    <form method="POST" class="needs-validation" novalidate>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="booking_type" class="form-label fw-semibold">Booking Type</label>
+                <select name="booking_type" id="booking_type" class="form-select" required>
+                    <option value="">Select Type</option>
+                    <option value="Flight">Flight</option>
+                    <option value="Train">Train</option>
+                    <option value="Bus">Bus</option>
+                </select>
+                <div class="invalid-feedback">Please select a booking type.</div>
+            </div>
 
-    <label for="travel_date">Travel Date:</label><br>
-    <input type="date" name="travel_date" required><br><br>
+            <div class="col-md-6">
+                <label for="travel_date" class="form-label fw-semibold">Travel Date</label>
+                <input type="date" name="travel_date" id="travel_date" class="form-control" required>
+                <div class="invalid-feedback">Please select a valid travel date.</div>
+            </div>
+        </div>
 
-    <button type="submit">Book Now</button>
-</form>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="source" class="form-label fw-semibold">Source</label>
+                <input type="text" name="source" id="source" class="form-control" placeholder="Enter source city" required>
+                <div class="invalid-feedback">Please enter your source city.</div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="destination" class="form-label fw-semibold">Destination</label>
+                <input type="text" name="destination" id="destination" class="form-control" placeholder="Enter destination city" required>
+                <div class="invalid-feedback">Please enter your destination city.</div>
+            </div>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-gradient-blue fw-bold py-2">Confirm Booking</button>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Prevent past date selection
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("travel_date").setAttribute("min", today);
+
+  // Basic validation
+  (() => {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', e => {
+        if (!form.checkValidity()) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+});
+</script>
+
 {% endblock %}

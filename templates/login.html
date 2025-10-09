@@ -1,15 +1,100 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<h2>Login</h2>
-<form method="POST">
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
 
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
+<section class="auth-section login-bg d-flex align-items-center justify-content-center py-5">
+  <div class="auth-container animate-in">
+    <div class="card auth-card shadow-lg border-0 p-4">
+      <div class="text-center mb-4">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" width="80" class="mb-3">
+        <h3 class="fw-bold text-dark">Welcome Back</h3>
+        <p class="text-dark small">Login to continue your journey</p>
+      </div>
 
-    <button type="submit">Login</button>
-</form>
-<p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+      <form id="loginForm" method="POST" novalidate>
+        <div class="mb-3">
+          <label for="email" class="form-label text-dark fw-semibold">Email</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-envelope-fill"></i></span>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label for="password" class="form-label text-dark fw-semibold">Password</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-lock-fill"></i></span>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+            <span class="input-group-text bg-light password-toggle" id="toggleLoginPass">
+              <i class="bi bi-eye"></i>
+            </span>
+          </div>
+          <div class="invalid-feedback">Please enter your password.</div>
+
+          <div class="mt-2">
+            <div class="progress" style="height:6px;">
+              <div id="loginStrengthBar" class="progress-bar"></div>
+            </div>
+            <small id="loginStrengthText" class="form-text text-dark"></small>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="form-check text-dark">
+            <input class="form-check-input" type="checkbox" id="remember">
+            <label class="form-check-label small" for="remember">Remember me</label>
+          </div>
+          <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-gradient-blue fw-bold py-2">Login</button>
+        </div>
+      </form>
+
+      <div class="text-center mt-4">
+        <p class="text-dark small mb-0">New here?</p>
+        <a href="{{ url_for('register') }}" class="text-decoration-none fw-semibold text-warning">Create an account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const form=document.getElementById("loginForm");
+  const email=document.getElementById("email");
+  const pass=document.getElementById("password");
+  const toggle=document.getElementById("toggleLoginPass");
+  const bar=document.getElementById("loginStrengthBar");
+  const text=document.getElementById("loginStrengthText");
+  const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  form.addEventListener("submit",e=>{
+    let ok=true;
+    if(!emailRegex.test(email.value.trim())){email.classList.add("is-invalid");ok=false;}
+    if(!pass.value.trim()){pass.classList.add("is-invalid");ok=false;}
+    if(!ok)e.preventDefault();
+  });
+  [email,pass].forEach(i=>i.addEventListener("input",()=>i.classList.remove("is-invalid")));
+
+  toggle.addEventListener("click",()=>{
+    const type=pass.type==="password"?"text":"password";
+    pass.type=type;
+    toggle.innerHTML=type==="password" ? '<i class="bi bi-eye"></i>' : '<i class="bi bi-eye-slash"></i>';
+  });
+
+  pass.addEventListener("input",()=>{
+    const v=pass.value;let s=0;
+    if(v.match(/[a-z]/))s++;if(v.match(/[A-Z]/))s++;if(v.match(/[0-9]/))s++;if(v.match(/[$@#&!]/))s++;
+    bar.style.width=(s/4)*100+"%";
+    if(s<=1){bar.className="progress-bar bg-danger";text.textContent="Weak 😟";}
+    else if(s==2){bar.className="progress-bar bg-warning";text.textContent="Medium 🙂";}
+    else if(s==3){bar.className="progress-bar bg-info";text.textContent="Good 👍";}
+    else{bar.className="progress-bar bg-success";text.textContent="Strong 💪";}
+  });
+});
+</script>
+
 {% endblock %}

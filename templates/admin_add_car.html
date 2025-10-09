@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Add Car{% endblock %}
+{% block content %}
+
+<section class="py-5 add-car-section">
+  <div class="container">
+    <div class="card shadow-lg border-0 p-4 rounded-4">
+      <h2 class="fw-bold text-gradient mb-4">🆕 Add New Car</h2>
+      <form method="POST" enctype="multipart/form-data" class="row g-4">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Car Name</label>
+          <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Car Type</label>
+          <input type="text" name="car_type" class="form-control" placeholder="SUV / Sedan / Sports" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">Seats</label>
+          <input type="number" name="seats" class="form-control" required>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">Transmission</label>
+          <select name="transmission" class="form-select" required>
+            <option value="Automatic">Automatic</option>
+            <option value="Manual">Manual</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">AC Type</label>
+          <select name="ac_type" class="form-select">
+            <option value="AC">AC</option>
+            <option value="Non-AC">Non-AC</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">Rating</label>
+          <input type="number" step="0.1" name="rating" class="form-control" min="1" max="5" required>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Price / Day (₹)</label>
+          <input type="number" name="price_per_day" class="form-control" step="0.01" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Pickup Location</label>
+          <input type="text" name="pickup_location" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Upload Car Image</label>
+          <input type="file" name="image" class="form-control" accept="image/*" required>
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-gradient-blue fw-bold py-2">Add Car</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

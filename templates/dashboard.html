@@ -1,38 +1,144 @@
 {% extends "base.html" %}
 {% block title %}User Dashboard{% endblock %}
+
 {% block content %}
-<h2>Welcome, {{ user }}!</h2>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Welcome, {{ user }}!</h2>
+        <div class="row text-center mb-4">
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0 bg-light">
+            <div class="card-body">
+                <h5 class="fw-bold text-primary">{{ bookings|length }}</h5>
+                <p class="text-muted mb-0">Total Bookings</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0 bg-light">
+            <div class="card-body">
+                <h5 class="fw-bold text-success">{{ rentals|length }}</h5>
+                <p class="text-muted mb-0">Car Rentals</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0 bg-light">
+            <div class="card-body">
+                <h5 class="fw-bold text-warning">{{ packages|length }}</h5>
+                <p class="text-muted mb-0">Tour Packages</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h3>My Bookings</h3>
-{% if bookings %}
-<ul>
-    {% for b in bookings %}
-    <li>{{ b.booking_type }}: {{ b.source }} → {{ b.destination }} on {{ b.travel_date }}</li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No bookings yet.</p>
-{% endif %}
+        <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm">Logout</a>
+    </div>
 
-<h3>My Car Rentals</h3>
-{% if rentals %}
-<ul>
-    {% for r in rentals %}
-    <li>{{ r.car_type }} at {{ r.pickup_location }} ({{ r.start_date }} → {{ r.end_date }})</li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No car rentals yet.</p>
-{% endif %}
+    <!-- ===== My Bookings Section ===== -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">My Bookings</h5>
+        </div>
+        <div class="card-body">
+            {% if bookings %}
+            <table class="table table-hover align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Type</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in bookings %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ b.booking_type }}</td>
+                        <td>{{ b.source }}</td>
+                        <td>{{ b.destination }}</td>
+                        <td>{{ b.travel_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="text-muted">No bookings yet. <a href="{{ url_for('book') }}">Book a trip now!</a></p>
+            {% endif %}
+        </div>
+    </div>
 
-<h3>My Tour Packages</h3>
-{% if packages %}
-<ul>
-    {% for p in packages %}
-    <li>{{ p.package_name }} on {{ p.booking_date }}</li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No packages booked yet.</p>
-{% endif %}
+    <!-- ===== My Car Rentals Section ===== -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">My Car Rentals</h5>
+        </div>
+        <div class="card-body">
+            {% if rentals %}
+            <table class="table table-hover align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Car Type</th>
+                        <th>Pickup</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in rentals %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ r.car_type }}</td>
+                        <td>{{ r.pickup_location }}</td>
+                        <td>{{ r.start_date }} → {{ r.end_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="text-muted">No car rentals yet. <a href="{{ url_for('rent_car') }}">Rent a car</a></p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- ===== My Tour Packages Section ===== -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0">My Tour Packages</h5>
+        </div>
+        <div class="card-body">
+            {% if packages %}
+            <table class="table table-hover align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Package Name</th>
+                        <th>Booking Date</th>
+                        <th>Booked At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in packages %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ p.package_name }}</td>
+                        <td>{{ p.booking_date }}</td>
+                        <td>{{ p.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="text-muted">No packages booked yet. <a href="{{ url_for('packages') }}">Explore packages</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<style>
+    .card-header h5 { font-weight: 600; }
+    table th, table td { vertical-align: middle !important; }
+</style>
+
 {% endblock %}

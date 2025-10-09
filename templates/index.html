@@ -16,11 +16,24 @@
 
         <!-- Buttons -->
         <div class="mt-4">
-            <a href="{{ url_for('packages') }}" class="btn btn-warning btn-lg me-2">🌍 Explore Packages</a>
-            {% if not session.get('user') %}
-            <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">🔑 Login</a>
-            {% endif %}
-        </div>
+    <a href="{{ url_for('packages') }}" class="btn btn-warning btn-lg me-2">
+        🌍 Explore Packages
+    </a>
+
+    {% if session.get('user_name') %}
+        <a href="{{ url_for('dashboard') }}" class="btn btn-warning btn-lg me-2">
+            📊 Dashboard
+        </a>
+        <a href="{{ url_for('logout') }}" class="btn btn-warning btn-lg">
+            🚪 Logout ({{ session['user_name'] }})
+        </a>
+    {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">
+            🔑 Login
+        </a>
+    {% endif %}
+</div>
+
     </div>
 </div>
 
@@ -30,27 +43,27 @@
     <div class="row text-center">
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
-                    <h3 class="card-title">✈️ Destinations</h3>
-                    <p class="card-text">Discover breathtaking locations with curated itineraries just for you.</p>
-                    <a href="{{ url_for('services') }}" class="btn btn-primary">Explore</a>
+                <div class="card-body1">
+                    <h3 class="card-title">🎟️ Book you Tickets</h3>
+                    <p class="card-text">Book your travel tickets effortlessly with our secure, user-friendly platform offering instant confirmation for flights, trains, and buses.</p>
+                    <a href="{{ url_for('book') }}" class="btn btn-primary">Book Tickets</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
+                <div class="card-body1">
                     <h3 class="card-title">🚗 Car Rentals</h3>
-                    <p class="card-text">Travel freely with affordable car rentals, available at top tourist spots worldwide.</p>
+                    <p class="card-text">Choose from a wide range of vehicles—compact cars to luxury SUVs—available for flexible durations, with easy booking to make your journey smooth</p>
                     <a href="{{ url_for('rent_car') }}" class="btn btn-primary">Rent a Car</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm border-0 h-100">
-                <div class="card-body">
+                <div class="card-body1">
                     <h3 class="card-title">🎒 Tour Packages</h3>
-                    <p class="card-text">Choose from custom-designed packages with unbeatable discounts.</p>
+                    <p class="card-text">Experience handpicked journeys with our customizable tour packages, featuring top destinations, guided activities, and comfortable stays</p>
                     <a href="{{ url_for('packages') }}" class="btn btn-primary">View Packages</a>
                 </div>
             </div>
@@ -64,8 +77,8 @@
     <div class="row">
         {% for p in packages[:3] %} {# show only 3 popular packages #}
         <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm border-0">
-                <img src="{{ url_for('static', filename='img/default_package.jpg') }}" class="card-img-top" alt="{{ p.package_name }}">
+            <div class="card package-card h-100 border-0 shadow-sm">
+                <img src="{{ url_for('static', filename='img/packages/' ~ p.image) }}" class="card-img-top" alt="{{ p.package_name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ p.package_name }}</h5>
                     <p class="card-text">{{ p.description[:80] }}...</p>

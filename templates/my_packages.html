@@ -1,27 +1,76 @@
 {% extends "base.html" %}
 {% block title %}My Tour Packages{% endblock %}
+
 {% block content %}
-<h2>My Package Bookings</h2>
-{% if my_bookings %}
-<table border="1" cellpadding="8">
-    <tr>
-        <th>Package</th>
-        <th>Category</th>
-        <th>Price (₹)</th>
-        <th>Booking Date</th>
-        <th>Booked At</th>
-    </tr>
-    {% for b in my_bookings %}
-    <tr>
-        <td>{{ b.package_name }}</td>
-        <td>{{ b.category }}</td>
-        <td>{{ b.price }}</td>
-        <td>{{ b.booking_date }}</td>
-        <td>{{ b.created_at }}</td>
-    </tr>
-    {% endfor %}
-</table>
-{% else %}
-<p>No packages booked yet.</p>
-{% endif %}
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-gradient">
+      <i class="bi bi-card-checklist"></i> My Tour Package Bookings
+    </h2>
+    <a href="{{ url_for('packages') }}" class="btn btn-gradient-blue btn-sm fw-semibold">
+      <i class="bi bi-plus-circle"></i> Explore More Packages
+    </a>
+  </div>
+
+  {% if my_bookings %}
+  <div class="card shadow-lg border-0 rounded-4 animate-in">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle text-center">
+          <thead class="table-primary">
+            <tr>
+              <th>#</th>
+              <th>Package</th>
+              <th>Category</th>
+              <th>Price (₹)</th>
+              <th>Booking Date</th>
+              <th>Booked At</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for b in my_bookings %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td class="fw-semibold text-primary">{{ b.package_name }}</td>
+              <td>{{ b.category }}</td>
+              <td class="text-success fw-bold">₹{{ b.price }}</td>
+              <td>{{ b.booking_date }}</td>
+              <td>{{ b.created_at }}</td>
+              <td>
+                <span class="badge bg-success-subtle text-success border border-success px-3 py-1 rounded-pill">
+                  Confirmed
+                </span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  {% else %}
+  <!-- 🎒 Empty State -->
+  <div class="text-center py-5">
+    <img src="{{ url_for('static', filename='img/no-data.svg') }}" width="220" class="mb-3" alt="No Bookings">
+    <h4 class="fw-bold text-muted">No Packages Booked Yet</h4>
+    <p class="text-secondary mb-4">Start your next adventure by exploring our exciting packages!</p>
+    <a href="{{ url_for('packages') }}" class="btn btn-gradient-orange fw-semibold">
+      <i class="bi bi-compass"></i> Browse Tour Packages
+    </a>
+  </div>
+  {% endif %}
+</div>
+
+<!-- ✨ Optional: Add a smooth entry animation -->
+<style>
+  .animate-in {
+    animation: fadeUp 0.6s ease-in-out;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
 {% endblock %}

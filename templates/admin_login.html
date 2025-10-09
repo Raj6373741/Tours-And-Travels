@@ -1,14 +1,78 @@
 {% extends "base.html" %}
 {% block title %}Admin Login{% endblock %}
+
 {% block content %}
-<h2>Admin Login</h2>
-<form method="POST">
-    <label for="email">Email:</label><br>
-    <input type="email" name="email" required><br><br>
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-lg border-0 p-4 rounded-4" style="max-width: 420px; width: 100%;">
+    <div class="text-center mb-4">
+      <div class="mb-3">
+        <i class="bi bi-shield-lock-fill text-primary" style="font-size: 3rem;"></i>
+      </div>
+      <h2 class="fw-bold text-gradient">Admin Login</h2>
+      <p class="text-muted mb-0">Access the management dashboard</p>
+    </div>
 
-    <label for="password">Password:</label><br>
-    <input type="password" name="password" required><br><br>
+    <!-- 🧩 Login Form -->
+    <form method="POST" autocomplete="off">
+      <div class="mb-3">
+        <label for="email" class="form-label fw-semibold">Email address</label>
+        <div class="input-group">
+          <span class="input-group-text bg-primary-subtle"><i class="bi bi-envelope-fill"></i></span>
+          <input type="email" class="form-control" name="email" id="email" placeholder="admin@example.com" required>
+        </div>
+      </div>
 
-    <button type="submit">Login</button>
-</form>
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <div class="input-group">
+          <span class="input-group-text bg-primary-subtle"><i class="bi bi-lock-fill"></i></span>
+          <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+          <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+            <i class="bi bi-eye-slash" id="eyeIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-gradient-blue fw-bold">
+          <i class="bi bi-box-arrow-in-right"></i> Login
+        </button>
+      </div>
+    </form>
+
+    <div class="text-center mt-4">
+      <a href="{{ url_for('home') }}" class="text-decoration-none text-muted">
+        ← Back to Home
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 🪄 Scripts -->
+<script>
+  // Show/hide password toggle
+  document.getElementById("togglePassword").addEventListener("click", function() {
+    const passwordInput = document.getElementById("password");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      eyeIcon.classList.replace("bi-eye-slash", "bi-eye");
+    } else {
+      passwordInput.type = "password";
+      eyeIcon.classList.replace("bi-eye", "bi-eye-slash");
+    }
+  });
+</script>
+
+<!-- 💫 Optional animation -->
+<style>
+  .card {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
 {% endblock %}

@@ -1,25 +1,136 @@
 {% extends "base.html" %}
 {% block title %}Rent a Car{% endblock %}
 {% block content %}
-<h2>Rent a Car</h2>
-<form method="POST">
-    <label for="car_type">Car Type:</label><br>
-    <select name="car_type" required>
-        <option value="Sedan">Sedan</option>
-        <option value="SUV">SUV</option>
-        <option value="Hatchback">Hatchback</option>
-        <option value="Luxury">Luxury</option>
-    </select><br><br>
 
-    <label for="pickup_location">Pickup Location:</label><br>
-    <input type="text" name="pickup_location" required><br><br>
+<section class="rent-car-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold text-gradient">🚗 Rent a Car</h1>
+      <p class="text-muted lead">Choose from a range of cars to make your journey smooth and comfortable.</p>
+    </div>
 
-    <label for="start_date">Start Date:</label><br>
-    <input type="date" name="start_date" required><br><br>
+    <!-- 🔍 Filter Section -->
+    <div class="filter-bar shadow-sm p-4 rounded-4 mb-5">
+      <form method="GET" class="row g-3 align-items-center">
+        <div class="col-md-4">
+          <input type="text" name="pickup_location" class="form-control" placeholder="Enter pickup city" required>
+        </div>
+        <div class="col-md-3">
+          <input type="date" name="start_date" id="start_date" class="form-control" required>
+        </div>
+        <div class="col-md-3">
+          <input type="date" name="end_date" id="end_date" class="form-control" required>
+        </div>
+        <div class="col-md-2 d-grid">
+          <button type="submit" class="btn btn-gradient-blue fw-bold">Search</button>
+        </div>
+      </form>
+    </div>
 
-    <label for="end_date">End Date:</label><br>
-    <input type="date" name="end_date" required><br><br>
+    <!-- 🚘 Available Cars -->
+    <div class="row g-4">
+      {% if cars %}
+        {% for car in cars %}
+        <div class="col-lg-4 col-md-6">
+          <div class="card car-card shadow-lg border-0 animate-in">
+            <div class="car-image-wrapper">
+              {% if car.name == 'Toyota Innova' %}
+  <img src="{{ url_for('static', filename='img/innova.jpg') }}" class="card-img-top" alt="{{ car.name }}">
 
-    <button type="submit">Book Car</button>
-</form>
+{% elif car.name == 'Hyundai i20' %}
+  <img src="{{ url_for('static', filename='img/i20.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Maruti Swift Dzire' %}
+  <img src="{{ url_for('static', filename='img/swift-dzire.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Honda City' %}
+  <img src="{{ url_for('static', filename='img/honda-city.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Kia Seltos' %}
+  <img src="{{ url_for('static', filename='img/kia-seltos.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Mercedes-Benz E-Class' %}
+  <img src="{{ url_for('static', filename='img/mercedes-eclass.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'BMW 5 Series' %}
+  <img src="{{ url_for('static', filename='img/bmw5-yellow.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Audi A6' %}
+  <img src="{{ url_for('static', filename='img/audi-a6.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Porsche 911 Carrera' %}
+  <img src="{{ url_for('static', filename='img/porsche-911.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Jaguar F-Type' %}
+  <img src="{{ url_for('static', filename='img/jaguar-ftype.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Lamborghini Huracán EVO' %}
+  <img src="{{ url_for('static', filename='img/lamborghini-huracan.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Range Rover Sport' %}
+  <img src="{{ url_for('static', filename='img/range-rover-sport.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% elif car.name == 'Toyota Fortuner Legender' %}
+  <img src="{{ url_for('static', filename='img/fortuner-legender.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+
+{% else %}
+  <img src="{{ car.image_url if car.image_url else url_for('static', filename='img/car-default.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+{% endif %}
+
+              <div class="price-tag">₹{{ car.price_per_day }}/day</div>
+            </div>
+            <div class="card-body">
+              <h5 class="fw-bold">{{ car.name }}</h5>
+              <p class="text-muted mb-2"><i class="bi bi-geo-alt-fill text-primary"></i> {{ car.pickup_location or 'Available in all major cities' }}</p>
+
+              <div class="car-specs mb-3">
+                <span><i class="bi bi-people-fill text-info"></i> {{ car.seats }} Seats</span>
+                <span><i class="bi bi-gear-fill text-warning"></i> {{ car.transmission }}</span>
+                <span><i class="bi bi-snow text-primary"></i> {{ car.ac_type }}</span>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="rating text-warning">
+                  <i class="bi bi-star-fill"></i> {{ car.rating or '4.5' }}
+                </span>
+                <form method="POST" action="{{ url_for('book_car', car_id=car.id) }}">
+                  <button type="submit" class="btn btn-gradient-orange btn-sm fw-bold">Book Now</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+      <div class="text-center py-5">
+        <img src="{{ url_for('static', filename='img/no-data.svg') }}" width="200" class="mb-3" alt="No Cars">
+        <h4 class="fw-bold">No Cars Found</h4>
+        <p class="text-muted">Try a different location or date range.</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Date Restriction Script -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const today = new Date().toISOString().split("T")[0];
+  const start = document.getElementById("start_date");
+  const end = document.getElementById("end_date");
+
+  // Prevent selecting past dates
+  start.min = today;
+  end.min = today;
+
+  // Ensure end date is not before start date
+  start.addEventListener("change", () => {
+    end.min = start.value;
+    if (end.value < start.value) {
+      end.value = start.value;
+    }
+  });
+});
+</script>
+
 {% endblock %}

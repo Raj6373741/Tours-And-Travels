@@ -1,15 +1,75 @@
 {% extends "base.html" %}
 {% block title %}Book Package{% endblock %}
+
 {% block content %}
-<h2>Book Package: {{ package.package_name }}</h2>
-<p><b>Category:</b> {{ package.category }}</p>
-<p><b>Price:</b> ₹{{ package.price }}</p>
-<p><b>Description:</b> {{ package.description }}</p>
+<div class="container py-5">
+  <div class="card shadow-lg border-0 rounded-4 p-4 animate-in">
+    <div class="card-body">
+      <h2 class="fw-bold text-primary mb-3">
+        <i class="bi bi-suitcase-fill"></i> Book Package: {{ package.package_name }}
+      </h2>
 
-<form method="POST">
-    <label for="booking_date">Booking Date:</label><br>
-    <input type="date" name="booking_date" required><br><br>
+      <div class="mb-4">
+        <p><b>Category:</b> {{ package.category }}</p>
+        <p><b>Price:</b> <span class="text-success fw-bold">₹{{ package.price }}</span></p>
+        <p><b>Description:</b> {{ package.description }}</p>
+      </div>
 
-    <button type="submit">Confirm Booking</button>
-</form>
+      <hr>
+
+      <form method="POST" id="packageBookingForm" class="mt-3">
+        <div class="row align-items-center g-3">
+          <div class="col-md-4">
+            <label for="booking_date" class="form-label fw-semibold">Booking Date:</label>
+            <input type="date" name="booking_date" id="booking_date" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Total Amount:</label>
+            <input type="text" id="total_price" class="form-control text-success fw-bold" value="₹{{ package.price }}" readonly>
+          </div>
+          <div class="col-md-4 d-grid">
+            <button type="submit" class="btn btn-gradient-blue fw-bold py-2">
+              <i class="bi bi-check-circle-fill"></i> Confirm Booking
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div id="dateSummary" class="mt-4 alert alert-info d-none">
+        <i class="bi bi-calendar-event"></i>
+        You selected <b><span id="selectedDate"></span></b> for your trip.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Script for enhanced UX -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const today = new Date().toISOString().split("T")[0];
+  const bookingDate = document.getElementById("booking_date");
+  const dateSummary = document.getElementById("dateSummary");
+  const selectedDate = document.getElementById("selectedDate");
+
+  // Disable past dates
+  bookingDate.min = today;
+
+  // Show selected date summary dynamically
+  bookingDate.addEventListener("change", () => {
+    if (bookingDate.value) {
+      const dateObj = new Date(bookingDate.value);
+      const formattedDate = dateObj.toLocaleDateString("en-IN", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+      selectedDate.textContent = formattedDate;
+      dateSummary.classList.remove("d-none");
+    } else {
+      dateSummary.classList.add("d-none");
+    }
+  });
+});
+</script>
 {% endblock %}

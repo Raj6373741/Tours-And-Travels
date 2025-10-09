@@ -3,33 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Tours & Travels{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column min-vh-100">
+        <!-- 🔔 Toast Notifications Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1200;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="toast align-items-center text-bg-{{ 'success' if category=='success' else 'danger' }} border-0 fade show mb-2" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+            <div class="toast-body fw-semibold">{{ message }}</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">🌍 Global Tours</a>
+            <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">Global Tours</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('services') }}">Destinations</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('book') }}">Tickets</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('rent_car') }}">Car Rental</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('packages') }}">Packages</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
-                    {% if session.get('user') %}
+                    {% if session.get('user_email') %}
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
                     {% else %}
                         <li class="nav-item"><a class="nav-link btn btn-warning text-dark px-3 ms-2" href="{{ url_for('login') }}">Login</a></li>
                     {% endif %}
+
                 </ul>
             </div>
         </div>
@@ -50,6 +67,15 @@
 </div>
     <!-- Main Page Content -->
     <main class="flex-grow-1">
+        <!-- Animated Background Elements -->
+        <div class="background-animations">
+        <div class="bubble bubble1"></div>
+        <div class="bubble bubble2"></div>
+        <div class="bubble bubble3"></div>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        </div>
+
         {% block content %}{% endblock %}
     </main>
 
@@ -96,6 +122,26 @@ window.addEventListener("scroll", function() {
     }
 });
 </script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const toastElList = [].slice.call(document.querySelectorAll('.toast'));
+    toastElList.map(el => new bootstrap.Toast(el, { delay: 4000 }).show());
+    });
+ // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fetch travel quote from a free API
+    fetch('https://api.quotable.io/random?tags=travel')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('travel-quote').textContent = `"${data.content}" — ${data.author}`;
+        })
+        .catch(() => {
+            document.getElementById('travel-quote').textContent = "Travel far enough, you meet yourself. 🌏";
+        });
+    </script>
+
 
 </body>
 </html>
