@@ -9,25 +9,49 @@
         <i class="bi bi-suitcase-fill"></i> Book Package: {{ package.package_name }}
       </h2>
 
+      <!-- ✅ Package Overview -->
       <div class="mb-4">
         <p><b>Category:</b> {{ package.category }}</p>
-        <p><b>Price:</b> <span class="text-success fw-bold">₹{{ package.price }}</span></p>
+        <p><b>Duration:</b> {{ package.duration_days }} Days / {{ package.duration_nights }} Nights</p>
+        <p><b>Locations Covered:</b> {{ package.locations_covered }}</p>
+        <p><b>Hotel Stays:</b> {{ package.hotel_stays }}</p>
+        <p><b>Price (per person):</b> <span class="text-success fw-bold">₹{{ package.price }}</span></p>
         <p><b>Description:</b> {{ package.description }}</p>
       </div>
 
       <hr>
 
+      <!-- ✅ Booking Form -->
       <form method="POST" id="packageBookingForm" class="mt-3">
-        <div class="row align-items-center g-3">
+        <div class="row g-3 align-items-center">
           <div class="col-md-4">
-            <label for="booking_date" class="form-label fw-semibold">Booking Date:</label>
+            <label for="booking_date" class="form-label fw-semibold">Start Date:</label>
             <input type="date" name="booking_date" id="booking_date" class="form-control" required>
           </div>
+
           <div class="col-md-4">
+            <label for="group_size" class="form-label fw-semibold">Number of Travelers:</label>
+            <input type="number" id="group_size" name="group_size" class="form-control" min="1" max="15" value="1" required>
+          </div>
+
+          <div class="col-md-4 d-grid">
+            <button type="button" id="generatePersons" class="btn btn-outline-primary fw-bold py-2">
+              <i class="bi bi-people-fill"></i> Add Traveler Details
+            </button>
+          </div>
+        </div>
+
+        <!-- ✅ Dynamic Traveler Details -->
+        <div id="travelerDetails" class="mt-4"></div>
+
+        <hr>
+
+        <div class="row g-3 align-items-center mt-3">
+          <div class="col-md-6">
             <label class="form-label fw-semibold">Total Amount:</label>
             <input type="text" id="total_price" class="form-control text-success fw-bold" value="₹{{ package.price }}" readonly>
           </div>
-          <div class="col-md-4 d-grid">
+          <div class="col-md-6 d-grid">
             <button type="submit" class="btn btn-gradient-blue fw-bold py-2">
               <i class="bi bi-check-circle-fill"></i> Confirm Booking
             </button>
@@ -37,24 +61,30 @@
 
       <div id="dateSummary" class="mt-4 alert alert-info d-none">
         <i class="bi bi-calendar-event"></i>
-        You selected <b><span id="selectedDate"></span></b> for your trip.
+        You selected <b><span id="selectedDate"></span></b> for your {{ package.duration_days }}-day trip.
       </div>
+
     </div>
   </div>
 </div>
 
-<!-- ✅ Script for enhanced UX -->
+<!-- ✅ SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const today = new Date().toISOString().split("T")[0];
   const bookingDate = document.getElementById("booking_date");
   const dateSummary = document.getElementById("dateSummary");
   const selectedDate = document.getElementById("selectedDate");
+  const groupSize = document.getElementById("group_size");
+  const generatePersons = document.getElementById("generatePersons");
+  const travelerDetails = document.getElementById("travelerDetails");
+  const totalPrice = document.getElementById("total_price");
+  const packagePrice = {{ package.price }};
 
   // Disable past dates
   bookingDate.min = today;
 
-  // Show selected date summary dynamically
+  // Show date summary
   bookingDate.addEventListener("change", () => {
     if (bookingDate.value) {
       const dateObj = new Date(bookingDate.value);
@@ -68,6 +98,56 @@ document.addEventListener("DOMContentLoaded", () => {
       dateSummary.classList.remove("d-none");
     } else {
       dateSummary.classList.add("d-none");
+    }
+  });
+
+  // Function to generate traveler detail inputs
+  function generateTravelerFields(count) {
+    travelerDetails.innerHTML = "";
+    for (let i = 1; i <= count; i++) {
+      const block = `
+        <div class="card shadow-sm border-0 rounded-3 mb-3">
+          <div class="card-body">
+            <h5 class="text-primary fw-bold">Traveler ${i}</h5>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label">Full Name:</label>
+                <input type="text" name="traveler_name_${i}" class="form-control" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Age:</label>
+                <input type="number" name="traveler_age_${i}" class="form-control" min="1" max="100" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Contact Number:</label>
+                <input type="tel" name="traveler_phone_${i}" class="form-control" pattern="[0-9]{10}" placeholder="10-digit number" ${i === 1 ? "required" : ""}>
+                ${i === 1 ? '<small class="text-muted">(Primary contact number required)</small>' : '<small class="text-muted">(Optional)</small>'}
+              </div>
+            </div>
+          </div>
+        </div>`;
+      travelerDetails.insertAdjacentHTML("beforeend", block);
+    }
+    const total = count * packagePrice;
+    totalPrice.value = `₹${total.toLocaleString("en-IN")}`;
+  }
+
+  // Generate travelers when button clicked
+  generatePersons.addEventListener("click", () => {
+    const count = parseInt(groupSize.value);
+    generateTravelerFields(count);
+  });
+
+  // ✅ Auto-generate one traveler initially
+  generateTravelerFields(1);
+
+  // ✅ If user submits without clicking “Add Traveler Details”
+  document.getElementById("packageBookingForm").addEventListener("submit", (e) => {
+    if (travelerDetails.children.length === 0) {
+      const count = parseInt(groupSize.value);
+      generateTravelerFields(count);
+      e.preventDefault();
+      alert("Please fill traveler details before submitting.");
     }
   });
 });

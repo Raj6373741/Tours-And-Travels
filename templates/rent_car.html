@@ -35,67 +35,48 @@
           <div class="card car-card shadow-lg border-0 animate-in">
             <div class="car-image-wrapper">
               {% if car.name == 'Toyota Innova' %}
-  <img src="{{ url_for('static', filename='img/innova.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Hyundai i20' %}
-  <img src="{{ url_for('static', filename='img/i20.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Maruti Swift Dzire' %}
-  <img src="{{ url_for('static', filename='img/swift-dzire.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Honda City' %}
-  <img src="{{ url_for('static', filename='img/honda-city.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Kia Seltos' %}
-  <img src="{{ url_for('static', filename='img/kia-seltos.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Mercedes-Benz E-Class' %}
-  <img src="{{ url_for('static', filename='img/mercedes-eclass.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'BMW 5 Series' %}
-  <img src="{{ url_for('static', filename='img/bmw5-yellow.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Audi A6' %}
-  <img src="{{ url_for('static', filename='img/audi-a6.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Porsche 911 Carrera' %}
-  <img src="{{ url_for('static', filename='img/porsche-911.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Jaguar F-Type' %}
-  <img src="{{ url_for('static', filename='img/jaguar-ftype.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Lamborghini Huracán EVO' %}
-  <img src="{{ url_for('static', filename='img/lamborghini-huracan.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Range Rover Sport' %}
-  <img src="{{ url_for('static', filename='img/range-rover-sport.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% elif car.name == 'Toyota Fortuner Legender' %}
-  <img src="{{ url_for('static', filename='img/fortuner-legender.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-
-{% else %}
-  <img src="{{ car.image_url if car.image_url else url_for('static', filename='img/car-default.jpg') }}" class="card-img-top" alt="{{ car.name }}">
-{% endif %}
+              <img src="{{ url_for('static', filename='img/innova.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Hyundai i20' %}
+                <img src="{{ url_for('static', filename='img/i20.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Maruti Swift Dzire' %}
+                <img src="{{ url_for('static', filename='img/swift-dzire.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Honda City' %}
+                <img src="{{ url_for('static', filename='img/honda-city.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Kia Seltos' %}
+                <img src="{{ url_for('static', filename='img/kia-seltos.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Mercedes-Benz E-Class' %}
+                <img src="{{ url_for('static', filename='img/mercedes-eclass.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'BMW 5 Series' %}
+                <img src="{{ url_for('static', filename='img/bmw5-yellow.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Audi A6' %}
+                <img src="{{ url_for('static', filename='img/audi-a6.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Porsche 911 Carrera' %}
+                <img src="{{ url_for('static', filename='img/porsche-911.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Jaguar F-Type' %}
+                <img src="{{ url_for('static', filename='img/jaguar-ftype.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Lamborghini Huracán EVO' %}
+                <img src="{{ url_for('static', filename='img/lamborghini-huracan.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Range Rover Sport' %}
+                <img src="{{ url_for('static', filename='img/range-rover-sport.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% elif car.name == 'Toyota Fortuner Legender' %}
+                <img src="{{ url_for('static', filename='img/fortuner-legender.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% else %}
+                <img src="{{ url_for('static', filename='img/car-default.jpg') }}" class="card-img-top" alt="{{ car.name }}">
+              {% endif %}
 
               <div class="price-tag">₹{{ car.price_per_day }}/day</div>
             </div>
             <div class="card-body">
               <h5 class="fw-bold">{{ car.name }}</h5>
-              <p class="text-muted mb-2"><i class="bi bi-geo-alt-fill text-primary"></i> {{ car.pickup_location or 'Available in all major cities' }}</p>
-
+              <p class="text-muted mb-2"><i class="bi bi-geo-alt-fill text-primary"></i> {{ car.pickup_location }}</p>
               <div class="car-specs mb-3">
                 <span><i class="bi bi-people-fill text-info"></i> {{ car.seats }} Seats</span>
                 <span><i class="bi bi-gear-fill text-warning"></i> {{ car.transmission }}</span>
                 <span><i class="bi bi-snow text-primary"></i> {{ car.ac_type }}</span>
               </div>
-
               <div class="d-flex justify-content-between align-items-center">
-                <span class="rating text-warning">
-                  <i class="bi bi-star-fill"></i> {{ car.rating or '4.5' }}
-                </span>
-                <form method="POST" action="{{ url_for('book_car', car_id=car.id) }}">
-                  <button type="submit" class="btn btn-gradient-orange btn-sm fw-bold">Book Now</button>
-                </form>
+                <span class="rating text-warning"><i class="bi bi-star-fill"></i> {{ car.rating or '4.5' }}</span>
+                <button type="button" class="btn btn-gradient-orange btn-sm fw-bold" data-bs-toggle="modal" data-bs-target="#bookingModal" data-car-id="{{ car.id }}" data-car-name="{{ car.name }}">Book Now</button>
               </div>
             </div>
           </div>
@@ -112,22 +93,81 @@
   </div>
 </section>
 
-<!-- ✅ Date Restriction Script -->
+<!-- ✅ Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="bookingForm" method="POST" action="{{ url_for('book_car') }}">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookingModalLabel">Book Car</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="car_id" id="modal_car_id">
+          <div class="mb-3">
+            <label for="user_name" class="form-label">Full Name</label>
+            <input type="text" name="user_name" id="user_name" class="form-control" required pattern="[A-Za-z\s]{3,}">
+          </div>
+          <div class="mb-3">
+            <label for="user_phone" class="form-label">Mobile Number (+91 required)</label>
+            <input type="text" name="user_phone" id="user_phone" class="form-control" required pattern="^\+91[0-9]{10}$" placeholder="+919876543210">
+          </div>
+          <div class="mb-3">
+            <label for="license_no" class="form-label">Driving License Number</label>
+            <input type="text" name="license_no" id="license_no" class="form-control" required pattern="[A-Z0-9]{6,15}">
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="start_date_modal" class="form-label">Start Date</label>
+              <input type="date" name="start_date" id="start_date_modal" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="end_date_modal" class="form-label">End Date</label>
+              <input type="date" name="end_date" id="end_date_modal" class="form-control" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-gradient-blue fw-bold w-100">Confirm Booking</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Script -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const today = new Date().toISOString().split("T")[0];
-  const start = document.getElementById("start_date");
-  const end = document.getElementById("end_date");
+  document.getElementById("start_date").min = today;
+  document.getElementById("end_date").min = today;
 
-  // Prevent selecting past dates
-  start.min = today;
-  end.min = today;
+  const modalStart = document.getElementById("start_date_modal");
+  const modalEnd = document.getElementById("end_date_modal");
+  modalStart.min = today;
+  modalEnd.min = today;
 
-  // Ensure end date is not before start date
-  start.addEventListener("change", () => {
-    end.min = start.value;
-    if (end.value < start.value) {
-      end.value = start.value;
+  modalStart.addEventListener("change", () => {
+    modalEnd.min = modalStart.value;
+    if (modalEnd.value < modalStart.value) modalEnd.value = modalStart.value;
+  });
+
+  // Transfer car data to modal
+  const bookingModal = document.getElementById('bookingModal');
+  bookingModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+    const carId = button.getAttribute('data-car-id');
+    const carName = button.getAttribute('data-car-name');
+    document.getElementById('modal_car_id').value = carId;
+    document.getElementById('bookingModalLabel').textContent = `Book ${carName}`;
+  });
+
+  // Validate before submit
+  document.getElementById('bookingForm').addEventListener('submit', (e) => {
+    const phone = document.getElementById('user_phone').value;
+    if (!phone.startsWith("+91") || phone.length !== 13) {
+      alert("Please enter a valid Indian mobile number starting with +91.");
+      e.preventDefault();
     }
   });
 });

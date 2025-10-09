@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Book Ticket{% endblock %}
 {% block content %}
-
 <div class="container my-5 p-4 bg-light rounded shadow-sm">
     <h2 class="text-center mb-4 text-primary">🎟️ Book Your Ticket</h2>
 
     <form method="POST" class="needs-validation" novalidate>
+        <!-- Booking Info -->
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="booking_type" class="form-label fw-semibold">Booking Type</label>
-                <select name="booking_type" id="booking_type" class="form-select" required>
+                <label class="form-label fw-semibold">Booking Type</label>
+                <select name="booking_type" class="form-select" required>
                     <option value="">Select Type</option>
                     <option value="Flight">Flight</option>
                     <option value="Train">Train</option>
@@ -17,26 +17,55 @@
                 </select>
                 <div class="invalid-feedback">Please select a booking type.</div>
             </div>
-
             <div class="col-md-6">
-                <label for="travel_date" class="form-label fw-semibold">Travel Date</label>
-                <input type="date" name="travel_date" id="travel_date" class="form-control" required>
-                <div class="invalid-feedback">Please select a valid travel date.</div>
+                <label class="form-label fw-semibold">Travel Date</label>
+                <input type="date" name="travel_date" class="form-control" required>
+                <div class="invalid-feedback">Please select a travel date.</div>
             </div>
         </div>
 
+        <!-- Route Info -->
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="source" class="form-label fw-semibold">Source</label>
-                <input type="text" name="source" id="source" class="form-control" placeholder="Enter source city" required>
-                <div class="invalid-feedback">Please enter your source city.</div>
+                <label class="form-label fw-semibold">Source</label>
+                <input type="text" name="source" class="form-control" placeholder="e.g. Delhi" required>
             </div>
-
             <div class="col-md-6">
-                <label for="destination" class="form-label fw-semibold">Destination</label>
-                <input type="text" name="destination" id="destination" class="form-control" placeholder="Enter destination city" required>
-                <div class="invalid-feedback">Please enter your destination city.</div>
+                <label class="form-label fw-semibold">Destination</label>
+                <input type="text" name="destination" class="form-control" placeholder="e.g. Mumbai" required>
             </div>
+        </div>
+
+        <hr>
+
+        <!-- Traveller Details -->
+        <h5 class="text-primary mt-3 mb-2">🧳 Traveller Details</h5>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label class="form-label">Full Name</label>
+                <input type="text" name="traveller_name" class="form-control" required>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">Age</label>
+                <input type="number" name="age" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Gender</label>
+                <select name="gender" class="form-select" required>
+                    <option value="">Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Phone</label>
+                <input type="tel" name="phone" class="form-control" required>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" required>
         </div>
 
         <div class="d-grid">
@@ -47,11 +76,9 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // Prevent past date selection
   const today = new Date().toISOString().split("T")[0];
-  document.getElementById("travel_date").setAttribute("min", today);
+  document.querySelector("input[name='travel_date']").setAttribute("min", today);
 
-  // Basic validation
   (() => {
     'use strict';
     const forms = document.querySelectorAll('.needs-validation');
@@ -67,5 +94,4 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 });
 </script>
-
 {% endblock %}
