@@ -15,12 +15,6 @@ import random
 import re
 import razorpay
 
-# Replace with your actual Razorpay keys
-RAZORPAY_KEY_ID = "rzp_test_RRWfulx7SidFou"
-RAZORPAY_KEY_SECRET = "NkX2fNWnrDnW4mKeaH2VGn3z"
-
-razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
-
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
@@ -31,6 +25,16 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'raj6373741@gmail.com'     # Replace
 app.config['MAIL_PASSWORD'] = 'dtzt eizf zkno dvrj'      # Replace
 mail = Mail(app)
+
+# ✅ Razorpay setup
+app.config['RAZORPAY_KEY_ID'] = 'rzp_test_RRWfulx7SidFou'
+app.config['RAZORPAY_KEY_SECRET'] = 'NkX2fNWnrDnW4mKeaH2VGn3z'
+
+# Initialize Razorpay client
+razorpay_client = razorpay.Client(auth=(
+    app.config['RAZORPAY_KEY_ID'],
+    app.config['RAZORPAY_KEY_SECRET']
+))
 
 # Token Serializer for secure password reset links
 s = URLSafeTimedSerializer(app.secret_key)
@@ -251,6 +255,7 @@ Safe travels ✈️🚆🚌
         return redirect(url_for("dashboard"))
 
     return render_template("book.html")
+
 
 @app.route("/my_bookings")
 def my_bookings():
