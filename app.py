@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
@@ -14,6 +14,9 @@ from io import BytesIO
 import random
 import re
 import razorpay
+from flask import Flask, render_template, request, jsonify
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -951,6 +954,173 @@ def reset_password(token):
         return redirect(url_for("login"))
 
     return render_template("reset_password.html")
+
+# 💬 Chatbot API Route
+# 💬 Context-Aware Chatbot Route
+# 💬 Chatbot API Route
+# 💬 Context-Aware Chatbot Route
+# 💬 Context-Aware Chatbot Route (with Packages)
+@app.route("/chatbot", methods=["POST"])
+def chatbot():
+    user_message = request.json.get("message", "").strip().lower()
+
+    if "chat_history" not in session:
+        session["chat_history"] = {"context": None}
+
+    context = session["chat_history"]["context"]
+    response = ""
+
+    if not user_message:
+        return jsonify({"response": "Please type something to start chatting."})
+
+    # --- Tour Packages Data ---
+    packages = {
+        "taj mahal": {
+            "location": "Agra, Uttar Pradesh",
+            "price": "₹9,999",
+            "duration": "2 Days / 1 Night",
+            "description": "Explore the magnificent Taj Mahal and nearby Agra Fort with guided tours and hotel stay.",
+            "attraction": "Taj Mahal, Agra Fort, Mehtab Bagh"
+        },
+        "goa": {
+            "location": "Goa, India",
+            "price": "₹14,999",
+            "duration": "4 Days / 3 Nights",
+            "description": "Experience the beaches, nightlife, and Portuguese heritage of Goa with this all-inclusive tour.",
+            "attraction": "Baga Beach, Fort Aguada, Basilica of Bom Jesus"
+        },
+        "jaipur": {
+            "location": "Jaipur, Rajasthan",
+            "price": "₹11,499",
+            "duration": "3 Days / 2 Nights",
+            "description": "Discover the Pink City’s palaces, forts, and markets in a royal getaway package.",
+            "attraction": "Amber Fort, City Palace, Hawa Mahal"
+        }
+    }
+
+    # --- Detect Intent ---
+    if any(greet in user_message for greet in ["hi", "hello", "hey"]):
+        response = "👋 Hello! I'm TravelBuddy. Would you like to book a flight, train, bus, car, or see our tour packages?"
+        session["chat_history"]["context"] = "greeting"
+
+    elif "package" in user_message or "tour" in user_message or "trip" in user_message:
+        # Try to detect which package user is asking for
+        found_pkg = None
+        for name in packages.keys():
+            if name in user_message:
+                found_pkg = name
+                break
+
+        if found_pkg:
+            pkg = packages[found_pkg]
+            response = (
+                f"🌍 **{found_pkg.title()} Package Details**\n"
+                f"📍 Location: {pkg['location']}\n"
+                f"📅 Duration: {pkg['duration']}\n"
+                f"💰 Price: {pkg['price']}\n"
+                f"🏖️ Attractions: {pkg['attraction']}\n"
+                f"ℹ️ {pkg['description']}\n\n"
+                f"Would you like to book this package?"
+            )
+            session["chat_history"]["context"] = f"booking_{found_pkg}_package"
+
+        else:
+            response = (
+                "Here are our popular tour packages 🌎:\n"
+                "1️⃣ Taj Mahal (Agra)\n"
+                "2️⃣ Goa Beaches Tour\n"
+                "3️⃣ Jaipur Heritage Trip\n\n"
+                "Type a destination name to know more (e.g., 'Goa package')."
+            )
+            session["chat_history"]["context"] = "showing_packages"
+
+    elif "book" in user_message and "package" in user_message:
+        for name in packages.keys():
+            if name in user_message:
+                response = f"🎉 Great choice! Let’s start booking your **{name.title()}** package. Please provide your travel date and number of travelers."
+                session["chat_history"]["context"] = f"booking_{name}_package"
+                break
+        else:
+            response = "Please tell me which package you’d like to book — Taj Mahal, Goa, or Jaipur."
+
+    elif "flight" in user_message:
+        response = "✈️ Great! Where would you like to fly from?"
+        session["chat_history"]["context"] = "booking_flight_source"
+
+    elif context == "booking_flight_source":
+        session["chat_history"]["flight_source"] = user_message.title()
+        session["chat_history"]["context"] = "booking_flight_destination"
+        response = f"Got it. Flying from {user_message.title()}. What's your destination?"
+
+    elif context == "booking_flight_destination":
+        session["chat_history"]["flight_destination"] = user_message.title()
+        source = session["chat_history"].get("flight_source")
+        dest = user_message.title()
+        session["chat_history"]["context"] = None
+        response = f"Perfect! ✈️ We'll search flights from {source} to {dest}. You can also visit the 'Book Flight' page to continue."
+
+    elif "train" in user_message:
+        response = "🚆 Sure! Please tell me your starting station."
+        session["chat_history"]["context"] = "booking_train_source"
+
+    elif context == "booking_train_source":
+        session["chat_history"]["train_source"] = user_message.title()
+        session["chat_history"]["context"] = "booking_train_destination"
+        response = f"Nice. Traveling from {user_message.title()}. What's your destination station?"
+
+    elif context == "booking_train_destination":
+        session["chat_history"]["train_destination"] = user_message.title()
+        source = session["chat_history"].get("train_source")
+        dest = user_message.title()
+        session["chat_history"]["context"] = None
+        response = f"Awesome! 🚆 I’ll look for trains from {source} to {dest}. You can also use the 'Book Train' page."
+
+    elif "bus" in user_message:
+        response = "🚌 Sure! Where are you boarding from?"
+        session["chat_history"]["context"] = "booking_bus_source"
+
+    elif context == "booking_bus_source":
+        session["chat_history"]["bus_source"] = user_message.title()
+        session["chat_history"]["context"] = "booking_bus_destination"
+        response = f"Okay, boarding from {user_message.title()}. What's your destination?"
+
+    elif context == "booking_bus_destination":
+        session["chat_history"]["bus_destination"] = user_message.title()
+        source = session["chat_history"].get("bus_source")
+        dest = user_message.title()
+        session["chat_history"]["context"] = None
+        response = f"Got it! 🚌 Searching buses from {source} to {dest}. You can also check the 'Book Bus' page."
+
+    elif "car" in user_message:
+        response = "🚗 Sure! From which city do you want to rent the car?"
+        session["chat_history"]["context"] = "booking_car_city"
+
+    elif context == "booking_car_city":
+        session["chat_history"]["car_city"] = user_message.title()
+        session["chat_history"]["context"] = None
+        response = f"Perfect! 🚗 Cars are available in {user_message.title()}. Visit 'Rent a Car' to continue."
+
+    elif "thank" in user_message:
+        response = "You're very welcome! 😊 Anything else I can help with?"
+
+    elif "help" in user_message:
+        response = "I can assist with booking flights, trains, buses, cars, or tour packages. What would you like to do?"
+        session["chat_history"]["context"] = None
+
+    else:
+        response = (
+            "I'm your TravelBuddy assistant 🤖. Try saying:\n"
+            "- 'Show packages'\n"
+            "- 'Book flight from Mumbai to Delhi'\n"
+            "- 'Tell me about Goa trip'"
+        )
+
+    # Save the updated session
+    session.modified = True
+
+    return jsonify({"response": response})
+
+
 
 # ------------------- MAIN -------------------
 if __name__ == "__main__":
