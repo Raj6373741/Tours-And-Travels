@@ -2,96 +2,329 @@
 {% block title %}Book Ticket{% endblock %}
 {% block content %}
 <div class="container my-5 p-4 bg-light rounded shadow-sm">
-    <h2 class="text-center mb-4 text-primary">🎟️ Book Your Ticket</h2>
+  <h2 class="text-center mb-4 text-primary">🎟️ Book Your Ticket</h2>
 
-    <form method="POST" class="needs-validation" novalidate>
-        <!-- Booking Info -->
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label class="form-label fw-semibold">Booking Type</label>
-                <select name="booking_type" class="form-select" required>
-                    <option value="">Select Type</option>
-                    <option value="Flight">Flight</option>
-                    <option value="Train">Train</option>
-                    <option value="Bus">Bus</option>
-                </select>
-                <div class="invalid-feedback">Please select a booking type.</div>
-            </div>
-            <div class="col-md-6">
-                <label class="form-label fw-semibold">Travel Date</label>
-                <input type="date" name="travel_date" class="form-control" required>
-                <div class="invalid-feedback">Please select a travel date.</div>
-            </div>
-        </div>
+  <form method="POST" id="bookingForm" class="needs-validation" novalidate>
+    <!-- Booking Info -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Booking Type</label>
+        <select name="booking_type" class="form-select" id="booking_type" required>
+          <option value="">Select Type</option>
+          <option value="Flight">Flight</option>
+          <option value="Train">Train</option>
+          <option value="Bus">Bus</option>
+        </select>
+        <div class="invalid-feedback">Please select a booking type.</div>
+      </div>
 
-        <!-- Route Info -->
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label class="form-label fw-semibold">Source</label>
-                <input type="text" name="source" class="form-control" placeholder="e.g. Delhi" required>
-            </div>
-            <div class="col-md-6">
-                <label class="form-label fw-semibold">Destination</label>
-                <input type="text" name="destination" class="form-control" placeholder="e.g. Mumbai" required>
-            </div>
-        </div>
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Travel Class</label>
+        <select name="travel_class" id="travel_class" class="form-select" required>
+          <option value="">Select Class</option>
+        </select>
+        <div class="invalid-feedback">Please select a class.</div>
+      </div>
 
-        <hr>
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Travel Date</label>
+        <input type="date" name="travel_date" class="form-control" required>
+      </div>
+    </div>
 
-        <!-- Traveller Details -->
-        <h5 class="text-primary mt-3 mb-2">🧳 Traveller Details</h5>
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label class="form-label">Full Name</label>
-                <input type="text" name="traveller_name" class="form-control" required>
-            </div>
-            <div class="col-md-2">
-                <label class="form-label">Age</label>
-                <input type="number" name="age" class="form-control" required>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Gender</label>
-                <select name="gender" class="form-select" required>
-                    <option value="">Select</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label class="form-label">Phone</label>
-                <input type="tel" name="phone" class="form-control" required>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required>
-        </div>
+    <!-- Route Info -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Source</label>
+        <input type="text" name="source" class="form-control" placeholder="e.g. Delhi" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Destination</label>
+        <input type="text" name="destination" class="form-control" placeholder="e.g. Mumbai" required>
+      </div>
+    </div>
 
-        <div class="d-grid">
-            <button type="submit" class="btn btn-gradient-blue fw-bold py-2">Confirm Booking</button>
-        </div>
-    </form>
+    <!-- Fare -->
+    <hr>
+    <h5 class="text-primary mt-3 mb-2">💰 Ticket Fare</h5>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Estimated Price per Ticket (₹)</label>
+        <input type="text" id="ticket_price" name="ticket_price" class="form-control" readonly>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Total Price (₹)</label>
+        <input type="text" id="total_price" class="form-control" readonly>
+      </div>
+    </div>
+
+    <!-- Passenger Details -->
+    <h5 class="text-primary mt-4 mb-2">🧳 Passenger Details</h5>
+    <div id="passengerContainer"></div>
+
+    <div class="d-flex justify-content-between my-3">
+      <button type="button" class="btn btn-outline-success" id="addPassengerBtn">➕ Add Passenger</button>
+      <small class="text-muted" id="passengerLimitText"></small>
+    </div>
+
+    <!-- Hidden field for passengers JSON -->
+    <input type="hidden" name="passengers" id="passengersField">
+
+    <div class="d-grid mt-4">
+      <button type="button" class="btn btn-gradient-blue fw-bold py-2" id="payButton">Proceed to Pay</button>
+    </div>
+  </form>
 </div>
+
+<!-- Razorpay Payment Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const today = new Date().toISOString().split("T")[0];
   document.querySelector("input[name='travel_date']").setAttribute("min", today);
 
-  (() => {
-    'use strict';
-    const forms = document.querySelectorAll('.needs-validation');
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', e => {
-        if (!form.checkValidity()) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
+  const bookingTypeSelect = document.getElementById("booking_type");
+  const classSelect = document.getElementById("travel_class");
+  const priceInput = document.getElementById("ticket_price");
+  const totalPriceInput = document.getElementById("total_price");
+  const passengerContainer = document.getElementById("passengerContainer");
+  const addPassengerBtn = document.getElementById("addPassengerBtn");
+  const passengersField = document.getElementById("passengersField");
+  const passengerLimitText = document.getElementById("passengerLimitText");
+  const payButton = document.getElementById("payButton");
+  const bookingForm = document.getElementById("bookingForm");
+
+  const classOptions = {
+    Flight: ["Economy", "Business"],
+    Train: ["Sleeper", "3 AC", "2 AC", "1 AC"],
+    Bus: ["Sleeper AC", "Sleeper Non-AC", "Seater AC", "Seater Non-AC"]
+  };
+
+  const baseFare = { Flight: 10, Train: 1.5, Bus: 2.5 };
+  const classMultiplier = {
+    Economy: 1, Business: 2.5,
+    Sleeper: 1, "3 AC": 1.5, "2 AC": 2, "1 AC": 3,
+    "Sleeper AC": 1.8, "Sleeper Non-AC": 1.2,
+    "Seater AC": 1.3, "Seater Non-AC": 1
+  };
+
+  const distances = {
+    "mumbai-pune": 150, "delhi-mumbai": 1400, "delhi-jaipur": 270,
+    "bangalore-chennai": 350, "kolkata-delhi": 1500,
+    "mumbai-goa": 590, "pune-nagpur": 700,
+    "delhi-lucknow": 550, "bangalore-hyderabad": 570
+  };
+
+  // Populate travel class based on booking type
+  bookingTypeSelect.addEventListener("change", () => {
+    const type = bookingTypeSelect.value;
+    classSelect.innerHTML = '<option value="">Select Class</option>';
+    if (classOptions[type]) {
+      classOptions[type].forEach(opt => {
+        const option = document.createElement("option");
+        option.value = opt;
+        option.textContent = opt;
+        classSelect.appendChild(option);
+      });
+    }
+
+    updatePassengerLimit();
+    calculateFare();
+  });
+
+  // Fare Calculation
+  function calculateFare() {
+    const type = bookingTypeSelect.value;
+    const travelClass = classSelect.value;
+    const source = document.querySelector("input[name='source']").value.trim().toLowerCase();
+    const destination = document.querySelector("input[name='destination']").value.trim().toLowerCase();
+    if (!type || !source || !destination || !travelClass) {
+      priceInput.value = "";
+      totalPriceInput.value = "";
+      return;
+    }
+
+    const key = `${source}-${destination}`;
+    const reverseKey = `${destination}-${source}`;
+    const distance = distances[key] || distances[reverseKey] || 500;
+    const perKm = baseFare[type] || 2;
+    const multiplier = classMultiplier[travelClass] || 1;
+    const perTicket = Math.round(distance * perKm * multiplier);
+    const total = perTicket * passengerContainer.children.length;
+
+    priceInput.value = perTicket;
+    totalPriceInput.value = total || 0;
+  }
+
+  // Passenger Management
+  function updatePassengerLimit() {
+    const type = bookingTypeSelect.value;
+    let limit = 6;
+    if (type === "Flight") limit = 9;
+    passengerLimitText.textContent = `Maximum allowed: ${limit} passengers`;
+    addPassengerBtn.disabled = passengerContainer.children.length >= limit;
+  }
+
+  function addPassenger() {
+    const type = bookingTypeSelect.value;
+    if (!type) return alert("Select Booking Type first!");
+
+    let limit = type === "Flight" ? 9 : 6;
+    if (passengerContainer.children.length >= limit) {
+      alert(`You can book only ${limit} passengers for ${type}.`);
+      return;
+    }
+
+    const passengerDiv = document.createElement("div");
+    passengerDiv.className = "row g-2 mb-2 passenger-item border rounded p-2";
+    passengerDiv.innerHTML = `
+      <div class="col-md-3"><input type="text" class="form-control name" placeholder="Full Name" required></div>
+      <div class="col-md-2"><input type="number" class="form-control age" placeholder="Age" required></div>
+      <div class="col-md-2">
+        <select class="form-select gender" required>
+          <option value="">Gender</option>
+          <option>Male</option><option>Female</option><option>Other</option>
+        </select>
+      </div>
+      <div class="col-md-3"><input type="tel" class="form-control phone" placeholder="+911234567890" required></div>
+      <div class="col-md-2"><input type="email" class="form-control email" placeholder="Email" required></div>
+      <div class="col-12 text-end mt-1">
+        <button type="button" class="btn btn-sm btn-danger remove-btn">Remove</button>
+      </div>
+    `;
+    passengerContainer.appendChild(passengerDiv);
+
+    passengerDiv.querySelector(".remove-btn").addEventListener("click", () => {
+      passengerDiv.remove();
+      updatePassengerLimit();
+      calculateFare();
     });
-  })();
+
+    updatePassengerLimit();
+    calculateFare();
+  }
+
+  addPassengerBtn.addEventListener("click", addPassenger);
+
+  document.querySelectorAll("input[name='source'], input[name='destination'], #travel_class")
+    .forEach(el => el.addEventListener("change", calculateFare));
+
+  // Collect passengers data
+  function collectPassengersData() {
+    const passengers = [];
+    passengerContainer.querySelectorAll(".passenger-item").forEach(div => {
+      passengers.push({
+        name: div.querySelector(".name").value.trim(),
+        age: div.querySelector(".age").value.trim(),
+        gender: div.querySelector(".gender").value.trim(),
+        phone: div.querySelector(".phone").value.trim(),
+        email: div.querySelector(".email").value.trim(),
+      });
+    });
+    passengersField.value = JSON.stringify(passengers);
+    return passengers;
+  }
+
+  // Razorpay Payment Integration
+  payButton.addEventListener("click", async function(e) {
+    e.preventDefault();
+
+    // Validate form
+    if (!bookingForm.checkValidity()) {
+      bookingForm.reportValidity();
+      return;
+    }
+
+    // Collect passengers data
+    const passengers = collectPassengersData();
+    if (passengers.length === 0) {
+      alert("Please add at least one passenger.");
+      return;
+    }
+
+    const totalAmount = parseFloat(totalPriceInput.value);
+    if (!totalAmount || totalAmount <= 0) {
+      alert("Please calculate fare first.");
+      return;
+    }
+
+    // Show loading state
+    payButton.disabled = true;
+    payButton.textContent = "Processing...";
+
+    try {
+      // Create order on server
+      const response = await fetch("/create_order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: totalAmount
+        })
+      });
+
+      const orderData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(orderData.error || "Failed to create order");
+      }
+
+      // Razorpay checkout options
+      const options = {
+        key: orderData.key,
+        amount: orderData.amount,
+        currency: "INR",
+        name: "TravelBuddy",
+        description: `Booking for ${passengers.length} passenger(s)`,
+        order_id: orderData.order_id,
+        handler: function(response) {
+          // Payment successful - submit the form
+          const paymentIdInput = document.createElement("input");
+          paymentIdInput.type = "hidden";
+          paymentIdInput.name = "razorpay_payment_id";
+          paymentIdInput.value = response.razorpay_payment_id;
+          bookingForm.appendChild(paymentIdInput);
+
+          const orderIdInput = document.createElement("input");
+          orderIdInput.type = "hidden";
+          orderIdInput.name = "razorpay_order_id";
+          orderIdInput.value = response.razorpay_order_id;
+          bookingForm.appendChild(orderIdInput);
+
+          const signatureInput = document.createElement("input");
+          signatureInput.type = "hidden";
+          signatureInput.name = "razorpay_signature";
+          signatureInput.value = response.razorpay_signature;
+          bookingForm.appendChild(signatureInput);
+
+          // Submit the form
+          bookingForm.submit();
+        },
+        prefill: {
+          name: passengers[0].name,
+          email: passengers[0].email,
+          contact: passengers[0].phone
+        },
+        theme: {
+          color: "#3399cc"
+        }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+
+    } catch (error) {
+      console.error("Payment error:", error);
+      alert("Payment initialization failed: " + error.message);
+    } finally {
+      // Reset button state
+      payButton.disabled = false;
+      payButton.textContent = "Proceed to Pay";
+    }
+  });
 });
 </script>
+
 {% endblock %}

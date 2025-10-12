@@ -76,7 +76,7 @@
               </div>
               <div class="d-flex justify-content-between align-items-center">
                 <span class="rating text-warning"><i class="bi bi-star-fill"></i> {{ car.rating or '4.5' }}</span>
-                <button type="button" class="btn btn-gradient-orange btn-sm fw-bold" data-bs-toggle="modal" data-bs-target="#bookingModal" data-car-id="{{ car.id }}" data-car-name="{{ car.name }}">Book Now</button>
+                <button type="button" class="btn btn-gradient-orange btn-sm fw-bold" data-bs-toggle="modal" data-bs-target="#bookingModal" data-car-id="{{ car.id }}" data-car-name="{{ car.name }}" data-car-price="{{ car.price_per_day }}">Book Now</button>
               </div>
             </div>
           </div>
@@ -97,13 +97,14 @@
 <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form id="bookingForm" method="POST" action="{{ url_for('book_car') }}">
+      <form id="bookingForm">
         <div class="modal-header">
           <h5 class="modal-title" id="bookingModalLabel">Book Car</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <input type="hidden" name="car_id" id="modal_car_id">
+          <input type="hidden" name="car_price" id="modal_car_price">
           <div class="mb-3">
             <label for="user_name" class="form-label">Full Name</label>
             <input type="text" name="user_name" id="user_name" class="form-control" required pattern="[A-Za-z\s]{3,}">
@@ -126,16 +127,38 @@
               <input type="date" name="end_date" id="end_date_modal" class="form-control" required>
             </div>
           </div>
+          
+          <!-- Price Calculation -->
+          <div class="card bg-light mt-3">
+            <div class="card-body">
+              <h6 class="card-title">💰 Price Summary</h6>
+              <div class="d-flex justify-content-between">
+                <span>Price per day:</span>
+                <span>₹<span id="display_car_price">0</span></span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Number of days:</span>
+                <span id="days_count">0</span>
+              </div>
+              <hr>
+              <div class="d-flex justify-content-between fw-bold">
+                <span>Total Amount:</span>
+                <span class="text-success">₹<span id="total_amount">0</span></span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-gradient-blue fw-bold w-100">Confirm Booking</button>
+          <button type="button" class="btn btn-success w-100" id="payButton">💳 Pay Now - ₹<span id="pay_amount">0</span></button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-<!-- ✅ Script -->
+<!-- Razorpay Payment Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const today = new Date().toISOString().split("T")[0];
@@ -147,10 +170,37 @@ document.addEventListener("DOMContentLoaded", () => {
   modalStart.min = today;
   modalEnd.min = today;
 
+  let carPrice = 0;
+  let totalAmount = 0;
+
+  // Calculate days and total amount
+  function calculateTotal() {
+    const startDate = new Date(modalStart.value);
+    const endDate = new Date(modalEnd.value);
+    
+    if (modalStart.value && modalEnd.value && startDate <= endDate) {
+      const timeDiff = endDate.getTime() - startDate.getTime();
+      const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1; // Include both start and end day
+      document.getElementById('days_count').textContent = daysDiff;
+      
+      totalAmount = carPrice * daysDiff;
+      document.getElementById('total_amount').textContent = totalAmount;
+      document.getElementById('pay_amount').textContent = totalAmount;
+    } else {
+      document.getElementById('days_count').textContent = '0';
+      document.getElementById('total_amount').textContent = '0';
+      document.getElementById('pay_amount').textContent = '0';
+      totalAmount = 0;
+    }
+  }
+
   modalStart.addEventListener("change", () => {
     modalEnd.min = modalStart.value;
     if (modalEnd.value < modalStart.value) modalEnd.value = modalStart.value;
+    calculateTotal();
   });
+
+  modalEnd.addEventListener("change", calculateTotal);
 
   // Transfer car data to modal
   const bookingModal = document.getElementById('bookingModal');
@@ -158,16 +208,133 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = event.relatedTarget;
     const carId = button.getAttribute('data-car-id');
     const carName = button.getAttribute('data-car-name');
+    carPrice = parseInt(button.getAttribute('data-car-price'));
+    
     document.getElementById('modal_car_id').value = carId;
+    document.getElementById('modal_car_price').value = carPrice;
+    document.getElementById('display_car_price').textContent = carPrice;
     document.getElementById('bookingModalLabel').textContent = `Book ${carName}`;
+    
+    // Reset form
+    document.getElementById('user_name').value = '';
+    document.getElementById('user_phone').value = '';
+    document.getElementById('license_no').value = '';
+    modalStart.value = '';
+    modalEnd.value = '';
+    calculateTotal();
   });
 
-  // Validate before submit
-  document.getElementById('bookingForm').addEventListener('submit', (e) => {
-    const phone = document.getElementById('user_phone').value;
-    if (!phone.startsWith("+91") || phone.length !== 13) {
+  // Razorpay Payment Integration
+  document.getElementById('payButton').addEventListener('click', async function(e) {
+    e.preventDefault();
+
+    // Validate form
+    const form = document.getElementById('bookingForm');
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const userPhone = document.getElementById('user_phone').value;
+    if (!userPhone.startsWith("+91") || userPhone.length !== 13) {
       alert("Please enter a valid Indian mobile number starting with +91.");
-      e.preventDefault();
+      return;
+    }
+
+    if (totalAmount <= 0) {
+      alert("Please select valid dates to calculate total amount.");
+      return;
+    }
+
+    // Show loading state
+    const payButton = document.getElementById('payButton');
+    payButton.disabled = true;
+    payButton.textContent = 'Processing Payment...';
+
+    try {
+      // Create order on server
+      const response = await fetch("/create_car_order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: totalAmount,
+          car_id: document.getElementById('modal_car_id').value,
+          car_name: document.getElementById('bookingModalLabel').textContent.replace('Book ', '')
+        })
+      });
+
+      const orderData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(orderData.error || "Failed to create order");
+      }
+
+      // Razorpay checkout options
+      const options = {
+        key: orderData.key,
+        amount: orderData.amount,
+        currency: "INR",
+        name: "TravelBuddy Car Rental",
+        description: "Car Rental Booking",
+        order_id: orderData.order_id,
+        handler: function(response) {
+          // Payment successful - submit the form to server
+          const formData = new FormData();
+          formData.append('car_id', document.getElementById('modal_car_id').value);
+          formData.append('user_name', document.getElementById('user_name').value);
+          formData.append('user_phone', document.getElementById('user_phone').value);
+          formData.append('license_no', document.getElementById('license_no').value);
+          formData.append('start_date', document.getElementById('start_date_modal').value);
+          formData.append('end_date', document.getElementById('end_date_modal').value);
+          formData.append('razorpay_payment_id', response.razorpay_payment_id);
+          formData.append('razorpay_order_id', response.razorpay_order_id);
+          formData.append('razorpay_signature', response.razorpay_signature);
+
+          fetch("/book_car", {
+            method: "POST",
+            body: formData
+          })
+          .then(res => {
+            if (res.ok) {
+              window.location.href = "/my_car_rentals";
+            } else {
+              throw new Error('Booking failed');
+            }
+          })
+          .catch(error => {
+            console.error('Booking error:', error);
+            alert('Booking failed. Please try again.');
+          });
+        },
+        prefill: {
+          name: document.getElementById('user_name').value,
+          email: "{{ session.user_email }}",
+          contact: document.getElementById('user_phone').value
+        },
+        theme: {
+          color: "#3399cc"
+        },
+        modal: {
+          ondismiss: function() {
+            // Reset button if payment is cancelled
+            payButton.disabled = false;
+            payButton.innerHTML = '💳 Pay Now - ₹<span id="pay_amount">' + totalAmount + '</span>';
+          }
+        }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+
+    } catch (error) {
+      console.error("Payment error:", error);
+      alert("Payment initialization failed: " + error.message);
+      
+      // Reset button state
+      payButton.disabled = false;
+      payButton.innerHTML = '💳 Pay Now - ₹<span id="pay_amount">' + totalAmount + '</span>';
     }
   });
 });
