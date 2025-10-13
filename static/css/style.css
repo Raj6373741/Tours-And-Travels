@@ -25,7 +25,7 @@
     box-shadow: none;
 }
 
-/* ====== GLOBAL ====== */
+/* GLOBAL */
 body {
     font-family: "Poppins", sans-serif;
     background-color: #f8f9fa;
@@ -38,7 +38,7 @@ a {
     text-decoration: none;
 }
 
-/* ====== NAVBAR ====== */
+/* NAVBAR */
 .navbar {
     padding: 0.8rem 1rem;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -65,7 +65,7 @@ a {
     font-weight: 600;
 }
 
-/* ====== HERO SECTION ====== */
+/* HERO SECTION */
 .hero-section {
     background: url("../images/IMG_6239.PNG") no-repeat center center/cover;
     height: 100vh;
@@ -98,7 +98,7 @@ a {
     animation: fadeInUp 1.2s ease-in-out;
 }
 
-/* ====== SEARCH BAR ====== */
+/*SEARCH BAR*/
 .search-bar input {
     border: none;
     padding: 14px 16px;
@@ -118,7 +118,7 @@ a {
     background: #e0a800;
 }
 
-/* ====== CARDS ====== */
+/*CARDS*/
 .card {
     border-radius: 15px;
     overflow: hidden;
@@ -134,7 +134,7 @@ a {
     color: #212529;
 }
 
-/* ====== FOOTER ====== */
+/*FOOTER*/
 .footer {
     font-size: 0.9rem;
     background: #212529;
@@ -150,7 +150,7 @@ a {
     color: #ffc107;
 }
 
-/* ====== ANIMATIONS ====== */
+/*ANIMATIONS*/
 @keyframes fadeInDown {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -160,7 +160,7 @@ a {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ====== PACKAGES PAGE ====== */
+/* PACKAGES PAGE */
 .packages-header {
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
 }
@@ -339,7 +339,7 @@ form.card {
 }
 
 
-/* ==== Common Auth Page Styles ==== */
+/* Common Auth Page Styles  */
 .auth-section {
     min-height: 100vh;
     display: flex;
@@ -365,7 +365,7 @@ form.card {
 }
 
 
-/* ✅ Validation Styling */
+/*Validation Styling */
 input.is-valid {
   border-color: #198754 !important;
 }
@@ -380,12 +380,12 @@ input.is-invalid {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* 🔁 Smooth transitions */
+/*Smooth transitions */
 input.form-control {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ✨ Shake animation when form invalid */
+/*Shake animation when form invalid */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   20%, 60% { transform: translateX(-5px); }
@@ -395,7 +395,7 @@ input.form-control {
   animation: shake 0.4s ease-in-out;
 }
 
-/* 🔦 Fade-in animation for messages */
+/*Fade-in animation for messages */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-2px); }
   to { opacity: 1; transform: translateY(0); }
@@ -480,9 +480,7 @@ input.form-control:focus {
 }
 
 
-/* ===============================
-   🌍 CONTACT PAGE STYLING
-   =============================== */
+/* CONTACT PAGE STYLING */
 .contact-section {
   background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
   min-height: 100vh;
@@ -497,7 +495,7 @@ input.form-control:focus {
   -webkit-text-fill-color: transparent;
 }
 
-/* 📨 Contact Form Card */
+/* Contact Form Card */
 .contact-card {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.85);
@@ -522,7 +520,7 @@ input.form-control:focus {
   box-shadow: none;
 }
 
-/* ✈️ Send Button */
+/* Send Button */
 .btn-contact {
   background: linear-gradient(90deg, #007bff, #00c6ff);
   color: #fff;
@@ -535,7 +533,7 @@ input.form-control:focus {
   box-shadow: 0 8px 20px rgba(0,123,255,0.3);
 }
 
-/* 📍 Contact Info Card */
+/* Contact Info Card */
 .contact-info-card {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.85);
@@ -547,7 +545,7 @@ input.form-control:focus {
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* 🗺️ Map Styling */
+/* Map Styling */
 .map-container iframe {
   filter: grayscale(30%) contrast(1.1) brightness(1.1);
   transition: all 0.5s ease;
@@ -556,7 +554,7 @@ input.form-control:focus {
   filter: none;
 }
 
-/* 🌟 Floating animation effect for both cards */
+/* Floating animation effect for both cards */
 .contact-card, .contact-info-card {
   animation: fadeSlideUp 0.8s ease both;
 }
@@ -566,9 +564,7 @@ input.form-control:focus {
 }
 
 
-/* ================================
-   🚗 MY CAR RENTALS PAGE STYLING
-   ================================ */
+/* MY CAR RENTALS PAGE STYLING*/
 
 .car-rentals-section {
   background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
@@ -648,9 +644,7 @@ input.form-control:focus {
 }
 
 
-/* ===============================
-   🚘 RENT A CAR PAGE STYLING
-   =============================== */
+/* RENT A CAR PAGE STYLING */
 
 .rent-car-section {
   background: linear-gradient(135deg, #e3f2fd, #e0f7fa);
@@ -765,11 +759,8 @@ input.form-control:focus {
   border-radius: 20px;
 }
 
-/* ===============================
-   🌟 PREMIUM REGISTER PAGE CSS
-   =============================== */
+/*REGISTER PAGE CSS */
 
-/* 🌈 Full-page animated gradient background */
 .register-bg {
   background: linear-gradient(135deg, #e0f3ff, #ffffff);
   min-height: 100vh;
@@ -793,7 +784,7 @@ input.form-control:focus {
   to { transform: translateY(-35px); }
 }
 
-/* 🪄 Glassmorphic auth card */
+/* Glassmorphic auth card */
 .auth-card {
   position: relative;
   z-index: 2;
@@ -811,7 +802,7 @@ input.form-control:focus {
   box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25);
 }
 
-/* ✨ Animated neon swirl behind card */
+/* Animated neon swirl behind card */
 .auth-card::before {
   content: "";
   position: absolute;
@@ -829,7 +820,7 @@ input.form-control:focus {
   to { transform: rotate(360deg); }
 }
 
-/* 🧊 Header Text */
+/* Header Text */
 .auth-card h2 {
   font-size: 2rem;
   font-weight: 800;
@@ -845,7 +836,7 @@ input.form-control:focus {
   margin-bottom: 2rem;
 }
 
-/* 🎯 Floating Labels for Inputs */
+/* Floating Labels for Inputs */
 .form-floating {
   position: relative;
   margin-bottom: 1.8rem;
@@ -882,7 +873,7 @@ input.form-control:focus {
   font-weight: 600;
 }
 
-/* ✨ Input icons */
+/* Input icons */
 .input-icon {
   position: absolute;
   right: 0;
@@ -896,7 +887,7 @@ input.form-control:focus {
   transform: scale(1.2);
 }
 
-/* 🔒 Password toggle */
+/* Password toggle */
 .password-toggle {
   position: absolute;
   right: 10px;
@@ -910,7 +901,7 @@ input.form-control:focus {
   transform: scale(1.3);
 }
 
-/* 💪 Password strength bar */
+/* Password strength bar */
 .progress {
   height: 7px;
   border-radius: 12px;
@@ -934,7 +925,7 @@ input.form-control:focus {
   font-size: 0.85rem;
 }
 
-/* 🔥 Gradient Buttons */
+/* Gradient Buttons */
 .btn-register {
   background: linear-gradient(90deg, #ff9f1c, #f77f00);
   border: none;
@@ -954,7 +945,7 @@ input.form-control:focus {
   background: linear-gradient(90deg, #ffb347, #ff6f00);
 }
 
-/* 🟢 Validation */
+/* Validation */
 input.is-valid { border-color: #4caf50 !important; }
 input.is-invalid { border-color: #ff4d4f !important; }
 .invalid-feedback {
@@ -965,7 +956,7 @@ input.is-invalid { border-color: #ff4d4f !important; }
   animation: fadeIn 0.4s ease;
 }
 
-/* ✨ Smooth entry animation */
+/* Smooth entry animation */
 .animate-in {
   animation: fadeSlideUp 1s ease forwards;
   opacity: 0;
@@ -975,9 +966,8 @@ input.is-invalid { border-color: #ff4d4f !important; }
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* ================================
-   🌟 Premium Floating Blobs Background
-   ================================ */
+ /* Premium Floating Blobs Background */
+ 
 .blob {
   position: absolute;
   border-radius: 50%;

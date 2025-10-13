@@ -21,7 +21,7 @@ import torch
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-# 🔐 Email Config (use an app password, not your real Gmail password)
+# Email Config (use an app password, not your real Gmail password)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -29,7 +29,7 @@ app.config['MAIL_USERNAME'] = 'raj6373741@gmail.com'     # Replace
 app.config['MAIL_PASSWORD'] = 'dtzt eizf zkno dvrj'      # Replace
 mail = Mail(app)
 
-# ✅ Razorpay setup
+# Razorpay setup
 app.config['RAZORPAY_KEY_ID'] = 'rzp_test_RRWfulx7SidFou'
 app.config['RAZORPAY_KEY_SECRET'] = 'NkX2fNWnrDnW4mKeaH2VGn3z'
 
@@ -59,7 +59,7 @@ def get_db_connection():
     )
     return conn
 
-# ------------------- ROUTES -------------------
+#  ROUTES 
 
 @app.route("/")
 def home():
@@ -81,7 +81,7 @@ def contact():
         email = request.form["email"]
         message = request.form["message"]
 
-        # ✅ Save to database (optional)
+        #  Save to database (optional)
         try:
             conn = get_db_connection()
             cursor = conn.cursor()
@@ -92,7 +92,7 @@ def contact():
         except Exception as e:
             print(f"⚠️ DB insert error: {e}")
 
-        # ✅ Send email to admin
+        #  Send email to admin
         try:
             admin_email = "raj6373741@gmail.com"  # change to your admin email
             msg = Message(
@@ -147,7 +147,7 @@ def book():
         from reportlab.lib.utils import ImageReader
         from flask_mail import Message
 
-        # ---- Verify Razorpay payment ----
+        # Verify Razorpay payment 
         razorpay_payment_id = request.form.get("razorpay_payment_id")
         razorpay_order_id = request.form.get("razorpay_order_id")
         razorpay_signature = request.form.get("razorpay_signature")
@@ -170,7 +170,7 @@ def book():
             flash("❌ Payment verification failed. Please try again.", "danger")
             return redirect(url_for("book"))
 
-        # ---- Extract basic booking info ----
+        # Extract basic booking info 
         booking_type = request.form.get("booking_type", "").strip().lower()
         travel_class = request.form.get("travel_class", "").strip().lower()
         source = request.form.get("source", "").strip().lower()
@@ -185,7 +185,7 @@ def book():
             flash("❌ Invalid passenger data format.", "danger")
             return redirect(url_for("book"))
 
-        # ---- Limit passenger count ----
+        # Limit passenger count 
         passenger_limit = 6 if booking_type in ["train", "bus"] else 9
         if len(passengers) == 0:
             flash("❌ Please add at least one passenger.", "danger")
@@ -194,7 +194,7 @@ def book():
             flash(f"❌ You can only book up to {passenger_limit} passengers for {booking_type.title()}!", "danger")
             return redirect(url_for("book"))
 
-        # ---- Static fare data ----
+        # Static fare data 
         fare_rates = {"flight": 10, "train": 1.5, "bus": 2.5}
         class_multipliers = {
             "economy": 1, "business": 2.5,
@@ -209,7 +209,7 @@ def book():
             "pune-nagpur": 700, "delhi-lucknow": 550, "bangalore-hyderabad": 570
         }
 
-        # ---- Distance calculation ----
+        # Distance calculation 
         route_key = f"{source}-{destination}"
         reverse_key = f"{destination}-{source}"
         distance = distances.get(route_key) or distances.get(reverse_key) or 500  # default fallback
@@ -236,7 +236,7 @@ def book():
 
         total_price = ticket_price * len(passengers)
 
-        # ---- Save bookings in DB ----
+        # Save bookings in DB 
         conn = get_db_connection()
         cursor = conn.cursor()
 
@@ -294,9 +294,9 @@ def book():
                 p.setFont("Helvetica", 12)
 
         y -= 20
-        p.drawString(80, y, f"Price per Ticket: ₹{ticket_price}")
+        p.drawString(80, y, f"Price per Ticket: Rs.{ticket_price}")
         y -= 20
-        p.drawString(80, y, f"Total Price: ₹{total_price}")
+        p.drawString(80, y, f"Total Price: Rs.{total_price}")
         y -= 20
         p.drawString(80, y, f"Payment ID: {razorpay_payment_id}")
 
@@ -307,7 +307,7 @@ def book():
         p.save()
         pdf_buffer.seek(0)
 
-        # ---- Send Email ----
+        # Send Email 
         try:
             msg = Message(
                 subject=f"🎟️ {booking_type.title()} Ticket Confirmation - TravelBuddy",
@@ -321,7 +321,7 @@ Hello {passengers[0]['name']},
 
 📋 Route: {source.title()} → {destination.title()}
 🗓️ Date: {travel_date}
-💰 Total Fare: ₹{total_price}
+💰 Total Fare: Rs.{total_price}
 🔗 Payment ID: {razorpay_payment_id}
 
 See attached PDF for ticket details.
@@ -512,7 +512,7 @@ def book_car():
     p.save()
     pdf_buffer.seek(0)
 
-    # 📧 Send email with PDF (your existing email code remains the same)
+    # Send email with PDF (your existing email code remains the same)
     try:
         msg = Message(
             subject="🚗 Your Car Rental Booking Confirmation - TravelBuddy",
@@ -653,7 +653,7 @@ def book_package(package_id):
         return redirect(url_for("packages"))
 
     if request.method == "POST":
-        # ---- Verify Razorpay payment ----
+        # Verify Razorpay payment 
         razorpay_payment_id = request.form.get("razorpay_payment_id")
         razorpay_order_id = request.form.get("razorpay_order_id")
         razorpay_signature = request.form.get("razorpay_signature")
@@ -702,24 +702,24 @@ def book_package(package_id):
         booking_id = cursor.lastrowid
         conn.close()
 
-        # ✅ Generate PDF with logo (your existing PDF generation code remains the same)
+        #  Generate PDF with logo (your existing PDF generation code remains the same)
         pdf_buffer = BytesIO()
         c = canvas.Canvas(pdf_buffer, pagesize=letter)
         width, height = letter
         y = height - 50
 
-        # --- Add Logo ---
+        # Add Logo 
         logo_path = os.path.join("static", "images", "logo.png")
         if os.path.exists(logo_path):
             c.drawImage(logo_path, width/2 - 50, y - 60, width=100, height=60, preserveAspectRatio=True)
         y -= 100
 
-        # --- Title ---
+        # Title 
         c.setFont("Helvetica-Bold", 16)
         c.drawCentredString(width / 2, y, "Package Booking Confirmation")
         y -= 40
 
-        # --- Booking Details ---
+        # Booking Details 
         c.setFont("Helvetica", 12)
         c.drawString(50, y, f"Booking ID: {booking_id}")
         y -= 20
@@ -770,7 +770,7 @@ def book_package(package_id):
         c.save()
         pdf_buffer.seek(0)
 
-        # ✅ Send email with PDF attachment (your existing email code remains the same)
+        #  Send email with PDF attachment (your existing email code remains the same)
         try:
             msg = Message(
                 subject=f"Booking Confirmed - {package['package_name']}",
@@ -782,7 +782,7 @@ def book_package(package_id):
                 f"Booking ID: {booking_id}\n"
                 f"Start Date: {booking_date}\n"
                 f"Total Travelers: {group_size}\n"
-                f"Total Amount: ₹{total_cost:,.2f}\n"
+                f"Total Amount: Rs.{total_cost:,.2f}\n"
                 f"Payment ID: {razorpay_payment_id}\n\n"
                 f"Please find the attached PDF confirmation.\n\n"
                 f"Thank you for booking with TravelBuddy!\n✈️"
@@ -848,7 +848,7 @@ def dashboard():
                            rentals=user_rentals,
                            packages=user_packages)
 
-# ------------------- Admin Routes -------------------
+# Admin Routes 
 
 @app.route("/admin/dashboard")
 def admin_dashboard():
@@ -939,7 +939,7 @@ def admin_register():
 
     return render_template("admin_register.html")
 
-# ------------------- User Auth -------------------
+# User Auth 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -1001,7 +1001,7 @@ def logout():
     flash("Logged out successfully!", "info")
     return redirect(url_for("home"))
 
-# ------------------- Admin Add Car -------------------
+# Admin Add Car 
 
 @app.route("/admin/add_car", methods=["GET", "POST"])
 def add_car():
@@ -1044,7 +1044,7 @@ def add_car():
 
     return render_template("admin_add_car.html")
 
-# ------------------- Password Reset -------------------
+# Password Reset 
 
 @app.route("/forgot_password", methods=["GET", "POST"])
 def forgot_password():
@@ -1106,7 +1106,7 @@ def reset_password(token):
 
     return render_template("reset_password.html")
 
-# 💬 Chatbot API Route
+#  Chatbot API Route
 @app.route("/chatbot", methods=["POST"])
 def chatbot():
     user_message = request.json.get("message", "").strip().lower()
@@ -1120,7 +1120,7 @@ def chatbot():
     if not user_message:
         return jsonify({"response": "Please type something to start chatting."})
 
-    # --- Tour Packages Data ---
+    # Tour Packages Data 
     packages = {
         "taj mahal": {
             "location": "Agra, Uttar Pradesh",
@@ -1145,7 +1145,7 @@ def chatbot():
         }
     }
 
-    # --- Detect Intent ---
+    # Detect Intent 
     if any(greet in user_message for greet in ["hi", "hello", "hey"]):
         response = "👋 Hello! I'm TravelBuddy. Would you like to book a flight, train, bus, car, or see our tour packages?"
         session["chat_history"]["context"] = "greeting"
@@ -1277,7 +1277,7 @@ def payment_success():
             "razorpay_payment_id": data["razorpay_payment_id"],
             "razorpay_signature": data["razorpay_signature"]
         })
-        # ✅ Payment verified → proceed to confirm booking, generate PDF, send email
+        #  Payment verified → proceed to confirm booking, generate PDF, send email
         return jsonify({"status": "success"})
     except razorpay.errors.SignatureVerificationError:
         return jsonify({"status": "failed"})
@@ -1285,7 +1285,7 @@ def payment_success():
 
 
 
-# ------------------- MAIN -------------------
+# MAIN 
 if __name__ == "__main__":
     app.run(debug=True)
 

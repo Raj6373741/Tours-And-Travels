@@ -13,7 +13,7 @@
 
 <div class="container py-5">
 
-    <!-- 🔍 Filter Section -->
+    <!--  Filter Section -->
     <form method="GET" action="{{ url_for('packages') }}" class="card p-3 mb-4 shadow-sm">
         <div class="row g-3 align-items-center">
             <div class="col-md-4">
@@ -49,7 +49,7 @@
         </div>
     </form>
 
-    <!-- 📦 Packages Grid -->
+    <!--  Packages Grid -->
     <div class="row g-4">
         {% if packages %}
             {% for p in packages %}
